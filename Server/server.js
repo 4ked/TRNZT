@@ -10,9 +10,7 @@ var io = socketio(server);
 
 const path = require('path');
 
-app.get('/', function(req, res){
-	res.sendFile(path.join(__dirname + '/..', '/Client/index.html'));
-});
+app.use('/', express.static('../Client/'));
 
 io.on('connection', function(socket){
     socket.on('chat message', function(msg){
