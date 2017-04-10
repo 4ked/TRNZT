@@ -1,2 +1,13 @@
-node_modules
+#########################
+## GITIGNORE OSX STUFF ##
+#########################
+
 .DS_Store
+
+############################
+## GITIGNORE NODEJS STUFF ##
+############################
+
+# Dependency directories
+
+node_modules
