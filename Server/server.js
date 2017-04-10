@@ -8,18 +8,15 @@ var app = express();
 var server = http.Server(app);
 var io = socketio(server);
 
-const path = require('path');
-
-app.get('/', function(req, res){
-	res.sendFile(path.join(__dirname + '/..', '/Client/index.html'));
-});
-
-io.on('connection', function(socket){
-    socket.on('chat message', function(msg){
-    	console.log('message: ' + msg);
-  	});
-});
+// pass web server to client
+app.use('/', express.static('../Client/'));
 
 server.listen(3000, function(){
   	console.log('listening on *:3000');
+});
+
+io.on('connection', function(socket){
+  	socket.on('chat message', function(msg){
+    	io.emit('chat message', msg);
+  	});
 });
