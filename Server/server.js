@@ -11,9 +11,13 @@ var io = socketio(server);
 // pass web server to client
 app.use('/', express.static('../Client/'));
 
+<<<<<<< HEAD
 server.listen(3000, function(){
   	console.log('listening on *:3000');
 });
+=======
+app.use('/', express.static('../Client/'));
+>>>>>>> d4fa947264cb89ee8b0896337dd135c16471fba7
 
 io.on('connection', function(socket){
   	socket.on('chat message', function(msg){
