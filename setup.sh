@@ -1,3 +1,12 @@
+### 
+### Help commands
+###
+
+# which git 	--> 	user path
+# man which		-->		BSD Command manual
+# git status	--> 	current git status
+# sudo su		-->		back out to root directory
+
 ### start-up static IP connection
 ssh -i ~/.ssh/my-ssh-key mgoeke@35.184.106.34
 
@@ -89,12 +98,3 @@ sudo netfilter-persistent save -y
 #
 # Installing Node.js via package manager
 # https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
-
-### 
-### Help commands
-###
-
-# which git 	--> 	user path
-# man which		-->		BSD Command manual
-# git status	--> 	current git status
-# sudo su		-->		back out to root directory

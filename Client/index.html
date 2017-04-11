@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
 	<title>TRNZT</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="/socket.io/socket.io.js"></script>
-	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<div id="map"></div>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV389xIQQoed4u7xGhy6sieHtgw0L7vOQ&callback=swoopMap"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>
