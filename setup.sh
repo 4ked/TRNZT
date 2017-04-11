@@ -1,13 +1,16 @@
 ### start-up static IP connection
-ssh -i ~/.ssh/my-ssh-key mgoeke@[IP_ADDRESS]
+ssh -i ~/.ssh/my-ssh-key mgoeke@35.184.106.34
 
 sudo apt-get update
 sudo apt-get upgrade -y
 
 sudo apt-get install git -y
 
-git config --global user.email $GIT_EMAIL
-git config --global user.name $GIT_NAME
+git config --global user.email max.goeke0@gmail.com
+git config --global user.name "Max Goeke"
+
+### check to see entered credentials before proceeding
+git config --list
 
 git clone https://github.com/4ked/TRNZT.git
 mkdir TRNZT/bin
@@ -60,8 +63,8 @@ sudo apt-get install certbot -t jessie-backports -y
 
 sudo certbot certonly --standalone -d mg.jwclark.info -m max.goeke0@gmail.com --agree-tos
 
-cp /etc/letsencrypt/live/mg.jwclark.info/privkey.pem /home/mgoeke/TC/bin/privkey.pem
-cp /etc/letsencrypt/live/mg.jwclark.info/fullchain.pem /home/mgoeke/TC/bin/fullchain.pem
+cp /etc/letsencrypt/live/mg.jwclark.info/privkey.pem /home/mgoeke/TRNZT/bin/privkey.pem
+cp /etc/letsencrypt/live/mg.jwclark.info/fullchain.pem /home/mgoeke/TRNZT/bin/fullchain.pem
 
 # Debian 8 - Update Iptables on boot
 # http://unix.stackexchange.com/questions/209393/debian-8-update-iptables-on-boot
@@ -86,3 +89,12 @@ sudo netfilter-persistent save -y
 #
 # Installing Node.js via package manager
 # https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+
+### 
+### Help commands
+###
+
+# which git 	--> 	user path
+# man which		-->		BSD Command manual
+# git status	--> 	current git status
+# sudo su		-->		back out to root directory
