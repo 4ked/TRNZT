@@ -1,0 +1,10 @@
+#main {
+	background-color: black;
+}
+button {
+	margin: none;
+	float: left;
+}
+.container, .container-fluid {
+	background: black;
+}
