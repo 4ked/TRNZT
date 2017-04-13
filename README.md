@@ -2,4 +2,4 @@
 
 Rather than worrying about your next transport, Tranzyt makes things simple. Select your ride options, and you're set, everything around you comes alive. Easily see whats available and at what cost, even the amount of time it's going to take.
 
-** - MG **
+**- MG**
