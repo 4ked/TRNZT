@@ -80,8 +80,8 @@ cp /etc/letsencrypt/live/mg.jwclark.info/fullchain.pem /home/mgoeke/TRNZT/bin/fu
 sudo apt-get install iptables-persistent -y
 
 # setup port forwarding
-sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
-sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 4043
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 3000
 
 # persist the IP tables
 sudo netfilter-persistent save -y

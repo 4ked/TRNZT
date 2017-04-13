@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "socket.io transportation based app",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "fs-extra": "^2.1.2",
+    "mongodb": "^2.2.25",
     "request": "^2.81.0",
     "socket.io": "^1.7.3"
   }
