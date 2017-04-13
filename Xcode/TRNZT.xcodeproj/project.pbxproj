@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		197DC7D81EA03FC3005D4413 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 197DC7D71EA03FC3005D4413 /* index.html */; };
+		197DC7DD1EA04029005D4413 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 197DC7DC1EA04029005D4413 /* main.css */; };
+		197DC7DF1EA0403B005D4413 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 197DC7DE1EA0403B005D4413 /* main.js */; };
+		197DC7E21EA0406E005D4413 /* server.js in Resources */ = {isa = PBXBuildFile; fileRef = 197DC7E11EA0406E005D4413 /* server.js */; };
+		197DC7E41EA040AE005D4413 /* custom.css in Resources */ = {isa = PBXBuildFile; fileRef = 197DC7E31EA040AE005D4413 /* custom.css */; };
 		1986C4631E9AEF5800BD7880 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1986C44B1E9AEF5800BD7880 /* SocketAckEmitter.swift */; };
 		1986C4641E9AEF5800BD7880 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1986C44C1E9AEF5800BD7880 /* SocketAckManager.swift */; };
 		1986C4651E9AEF5800BD7880 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1986C44D1E9AEF5800BD7880 /* SocketAnyEvent.swift */; };
@@ -58,6 +63,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		197DC7D71EA03FC3005D4413 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = WebClient/index.html; sourceTree = "<group>"; };
+		197DC7DC1EA04029005D4413 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = main.css; path = WebClient/main.css; sourceTree = "<group>"; };
+		197DC7DE1EA0403B005D4413 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = WebClient/main.js; sourceTree = "<group>"; };
+		197DC7E11EA0406E005D4413 /* server.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = server.js; path = WebClient/server.js; sourceTree = "<group>"; };
+		197DC7E31EA040AE005D4413 /* custom.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = custom.css; path = WebClient/custom.css; sourceTree = "<group>"; };
 		1986C44B1E9AEF5800BD7880 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
 		1986C44C1E9AEF5800BD7880 /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
 		1986C44D1E9AEF5800BD7880 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
@@ -122,6 +132,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		197DC7D61EA03F7C005D4413 /* WebClient */ = {
+			isa = PBXGroup;
+			children = (
+				197DC7E01EA04059005D4413 /* Server */,
+				197DC7D91EA03FE5005D4413 /* Client */,
+			);
+			name = WebClient;
+			sourceTree = "<group>";
+		};
+		197DC7D91EA03FE5005D4413 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				197DC7D71EA03FC3005D4413 /* index.html */,
+				197DC7DB1EA0400C005D4413 /* css */,
+				197DC7DA1EA04002005D4413 /* js */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
+		197DC7DA1EA04002005D4413 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				197DC7DE1EA0403B005D4413 /* main.js */,
+			);
+			name = js;
+			sourceTree = "<group>";
+		};
+		197DC7DB1EA0400C005D4413 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				197DC7DC1EA04029005D4413 /* main.css */,
+				197DC7E31EA040AE005D4413 /* custom.css */,
+			);
+			name = css;
+			sourceTree = "<group>";
+		};
+		197DC7E01EA04059005D4413 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				197DC7E11EA0406E005D4413 /* server.js */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
 		1986C44A1E9AEF5800BD7880 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,8 +230,8 @@
 		19910A4B1E9A98E100E5153D /* TRNZT */ = {
 			isa = PBXGroup;
 			children = (
+				197DC7D61EA03F7C005D4413 /* WebClient */,
 				1986C44A1E9AEF5800BD7880 /* Source */,
-				19910A7A1E9A9AD100E5153D /* WebClient */,
 				19910A4C1E9A98E100E5153D /* AppDelegate.swift */,
 				19910A4E1E9A98E100E5153D /* ViewController.swift */,
 				19910A501E9A98E100E5153D /* Main.storyboard */,
@@ -204,13 +258,6 @@
 				19910A6E1E9A98E100E5153D /* Info.plist */,
 			);
 			path = TRNZTUITests;
-			sourceTree = "<group>";
-		};
-		19910A7A1E9A9AD100E5153D /* WebClient */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = WebClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +368,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				19910A571E9A98E100E5153D /* LaunchScreen.storyboard in Resources */,
+				197DC7DD1EA04029005D4413 /* main.css in Resources */,
+				197DC7E21EA0406E005D4413 /* server.js in Resources */,
+				197DC7D81EA03FC3005D4413 /* index.html in Resources */,
+				197DC7E41EA040AE005D4413 /* custom.css in Resources */,
+				197DC7DF1EA0403B005D4413 /* main.js in Resources */,
 				19910A541E9A98E100E5153D /* Assets.xcassets in Resources */,
 				19910A521E9A98E100E5153D /* Main.storyboard in Resources */,
 			);

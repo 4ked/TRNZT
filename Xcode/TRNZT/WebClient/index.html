@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>TRNZT</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+            <meta charset="UTF-8">
+                <link rel="stylesheet" type="text/css" href="css/main.css">
+                    <link rel="stylesheet" type="text/css" href="css/custom.css">
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="main" class="container-fluid">
+            <div class="row">
+                <div id="nav-button" class="col-sm-1">
+                    <div class="dropdown">
+                        <button type="button" id="menu-glyph" class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">About TRNZT</a></li>
+                            <li>
+                                <a href="#">
+                                    <div class="payment-icon" role="alert">
+                                        <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+                                        <span class="sr-only">Payment</span>
+                                        Account
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="history-icon" role="alert">
+                                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                        <span class="sr-only">History</span>
+                                        History
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="settings-cog" role="alert">
+                                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                        <span class="sr-only">Settings</span>
+                                        Settings
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="help-mark" role="alert">
+                                        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                                        <span class="sr-only">Help</span>
+                                        Help
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div class="documentation-globe" role="alert">
+                                        <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                                        <span class="sr-only">Docs</span>
+                                        Documentation
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main" class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+        <div id="main" class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="features"></div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+        <script src="js/main.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV389xIQQoed4u7xGhy6sieHtgw0L7vOQ&callback=initMap"></script>
+    </body>
+</html>
+
+
+<!-- &callback=initMap -->

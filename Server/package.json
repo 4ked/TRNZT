@@ -4,6 +4,7 @@
   "description": "socket.io transportation based app",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
     "fs-extra": "^2.1.2",
     "mongodb": "^2.2.25",
