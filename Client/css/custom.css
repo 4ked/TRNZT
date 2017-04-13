@@ -1,3 +1,6 @@
+body {
+	background-color: black;
+}
 #main {
 	background-color: black;
 }
@@ -6,5 +9,5 @@ button {
 	float: left;
 }
 .container, .container-fluid {
-	background: black;
+	background-color: black;
 }
