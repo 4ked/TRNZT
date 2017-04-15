@@ -1,0 +1,10 @@
+client_id: LJGpana69PX47lPLFP5PpIdySYT5CT-G
+client_secret: mgtzL4Ok7Ibyfb4ecvO-PpQhQJbgTLF3SC_vS8RN
+redirect_url: http://localhost:3000
+scopes:
+    - profile
+    - history
+    - places
+    - request
+    - request_receipt
+    - all_trips
