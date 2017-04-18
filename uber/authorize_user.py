@@ -35,9 +35,23 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+from collections import OrderedDict
+from random import SystemRandom
+from requests import codes
+from requests import post
+from string import ascii_letters
+from string import digits
+
 from builtins import input
 
 from yaml import safe_dump
+
+try:
+    from urllib.parse import parse_qs
+    from urllib.parse import urlparse
+except ImportError:
+    from urlparse import parse_qs
+    from urlparse import urlparse
 
 from example import utils
 from example.utils import fail_print
@@ -50,6 +64,10 @@ from uber_rides.client import UberRidesClient
 from uber_rides.errors import ClientError
 from uber_rides.errors import ServerError
 from uber_rides.errors import UberIllegalState
+from uber_rides.session import OAuth2Credential
+from uber_rides.session import Session
+from uber_rides.utils import auth
+from uber_rides.utils.request import build_url
 
 
 def authorization_code_grant_flow(credentials, storage_filename):
@@ -65,10 +83,10 @@ def authorization_code_grant_flow(credentials, storage_filename):
             An UberRidesClient with OAuth 2.0 Credentials.
     """
     auth_flow = AuthorizationCodeGrant(
-        credentials.get('client_id'),
-        credentials.get('scopes'),
-        credentials.get('client_secret'),
-        credentials.get('redirect_url'),
+        credentials.get('LJGpana69PX47lPLFP5PpIdySYT5CT-G'),
+        credentials.get('profile', 'history', 'places', 'request', 'all_trips'),
+        credentials.get('mgtzL4Ok7Ibyfb4ecvO-PpQhQJbgTLF3SC_vS8RN'),
+        credentials.get('http://localhost:3000''),
     )
 
     auth_url = auth_flow.get_authorization_url()
