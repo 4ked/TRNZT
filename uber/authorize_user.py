@@ -53,11 +53,11 @@ except ImportError:
     from urlparse import parse_qs
     from urlparse import urlparse
 
-from example import utils
-from example.utils import fail_print
-from example.utils import response_print
-from example.utils import success_print
-from example.utils import import_app_credentials
+from uber import utils
+from uber.utils import fail_print
+from uber.utils import response_print
+from uber.utils import success_print
+from uber.utils import import_app_credentials
 
 from uber_rides.auth import AuthorizationCodeGrant
 from uber_rides.client import UberRidesClient
