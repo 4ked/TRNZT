@@ -91,10 +91,19 @@ sudo netfilter-persistent save -y
 # http://stackoverflow.com/a/28542093/1161948
 
 
-
 # Notes
 # How To Secure Apache with Let's Encrypt on Debian 8
 # https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-debian-8
 #
 # Installing Node.js via package manager
 # https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+
+###
+### OpenSSL	keygen (Created inside root directory)
+###
+###	Challenge password: Rock
+###
+
+openssl genrsa -out key.pem
+openssl req -new -key key.pem -out csr.pem
+openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem

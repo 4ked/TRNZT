@@ -17,9 +17,9 @@ var io = socketio(server);
 
 app.use('/', express.static('../Client/'));
 
-var options = {
-        key: fs.readFileSync('key.pem'),
-        cert: fs.readFileSync('cert.pem')
+var credentials = {
+    key:  fs.readFileSync('bin/key.pem'),
+    cert: fs.readFileSync('bin/cert.pem')
 };
 
 // body parsing ensures req.body property
@@ -45,11 +45,32 @@ io.on('connection', function(socket){
   	});
 });
 
-/*
-server.listen(3000, function(){
-  	console.log('listening on *:3000');
-});
-*/
+// logger that prevents circular object reference in javascript
+var log = function(msg, obj) {
+    console.log('\n');
+    if(obj) {
+        try {
+            console.log(msg + JSON.stringify(obj));
+        } catch(err) {
+            var simpleObject = {};
+            for (var prop in obj ){
+                if (!obj.hasOwnProperty(prop)){
+                    continue;
+                }
+                if (typeof(obj[prop]) == 'object'){
+                    continue;
+                }
+                if (typeof(obj[prop]) == 'function'){
+                    continue;
+                }
+                simpleObject[prop] = obj[prop];
+            }
+            console.log('circular-' + msg + JSON.stringify(simpleObject)); // returns cleaned up JSON
+        }        
+    } else {
+        console.log(msg);
+    }
+};
 
 // secure web server
 https.createServer(credentials, app).listen(3000);
@@ -68,4 +89,4 @@ http.createServer(function(req, res) {
     }
 }).listen(8080);
 
-console.log('ready to serve');
+log('ready to serve');
