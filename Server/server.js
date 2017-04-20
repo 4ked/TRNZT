@@ -12,9 +12,11 @@ var bodyParser 		= require('body-parser'); // middleware
 // web server
 var app = express();
 app.use(cookieParser());
+
 var server = http.Server(app);
 var io = socketio(server);
 
+// static file serving
 app.use('/', express.static('../Client/'));
 
 var credentials = {
