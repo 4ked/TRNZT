@@ -107,3 +107,7 @@ sudo netfilter-persistent save -y
 openssl genrsa -out key.pem
 openssl req -new -key key.pem -out csr.pem
 openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem
+
+openssl genrsa -out key.pem 2048
+openssl req -new -key key.pem -out client.csr
+openssl x509 -req -in client.csr -signkey key.pem -out cert.pem
