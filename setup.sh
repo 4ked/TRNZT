@@ -6,6 +6,7 @@
 # man which		-->		BSD Command manual
 # git status	--> 	current git status
 # sudo su		-->		back out to root directory
+# cd /etc		-->		Access system properties
 
 ### start-up static IP connection
 ssh -i ~/.ssh/my-ssh-key mgoeke@35.184.106.34
@@ -97,17 +98,3 @@ sudo netfilter-persistent save -y
 #
 # Installing Node.js via package manager
 # https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
-
-###
-### OpenSSL	keygen (Created inside root directory)
-###
-###	Challenge password: Rock
-###
-
-openssl genrsa -out key.pem
-openssl req -new -key key.pem -out csr.pem
-openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem
-
-openssl genrsa -out key.pem 2048
-openssl req -new -key key.pem -out client.csr
-openssl x509 -req -in client.csr -signkey key.pem -out cert.pem
