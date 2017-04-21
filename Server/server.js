@@ -7,7 +7,8 @@ var cookieParser 	= require('cookie-parser'); // parse cookies
 var socketio 		= require('socket.io'); // websocket
 var request 		= require('request'); // http trafficer
 var bodyParser 		= require('body-parser'); // middleware
-// Helmet
+var Uber 			= require('node-uber'); // import uber api
+var geocoder		= require('geocoder'); // coordinate geocoder
 
 // web server
 var app = express();
@@ -92,3 +93,56 @@ http.createServer(function(req, res) {
 }).listen(8080);
 
 log('ready to serve');
+
+var uber = new Uber({
+  client_id: 'LJGpana69PX47lPLFP5PpIdySYT5CT-G',
+  client_secret: 'mgtzL4Ok7Ibyfb4ecvO-PpQhQJbgTLF3SC_vS8RN',
+  server_token: 'Drp9ApEpmWdRKUIsf3CS3RGCmvo-tTDRGzYV6BDv',
+  redirect_uri: 'https://local.info:3000',
+  name: 'TRNZT',
+  language: 'en_US', // optional, defaults to en_US
+  sandbox: true // optional, defaults to false
+});
+
+app.get('/api/login', function(request, response) {
+  var url = uber.getAuthorizeUrl(['history','profile', 'request', 'places', 'all_trips', 'ride_widgets']);
+  response.redirect(url);
+});
+
+app.get('/api/callback', function(request, response) {
+   uber.authorizationAsync({authorization_code: request.query.code})
+   .spread(function(access_token, refresh_token, authorizedScopes, tokenExpiration) {
+     // store the user id and associated access_token, refresh_token, scopes and token expiration date
+     log('New access_token retrieved: ' + access_token);
+     log('... token allows access to scopes: ' + authorizedScopes);
+     log('... token is valid until: ' + tokenExpiration);
+     log('... after token expiration, re-authorize using refresh_token: ' + refresh_token);
+
+     // redirect the user back to your actual app
+     response.redirect('../Client/index.html');
+   })
+   .error(function(err) {
+     console.error(err);
+   });
+});
+
+app.get('/api/products', function(request, response) {
+  // extract the query from the request URL
+  var query = url.parse(request.url, true).query;
+
+  // if no query params sent, respond with Bad Request
+  if (!query || !query.lat || !query.lng) {
+    response.sendStatus(400);
+  } else {
+    uber.products.getAllForLocationAsync(query.lat, query.lng)
+    .then(function(res) {
+        response.json(res);
+    })
+    .error(function(err) {
+      console.error(err);
+      response.sendStatus(500);
+    });
+  }
+});
+
+
