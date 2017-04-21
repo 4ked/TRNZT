@@ -138,18 +138,19 @@ app.get('/api/requests', function(request, response) {
 	})
 	.then(function(res) { 
 		log(res); 
+		uber.requests.getCurrentAsync()
+		.then(function(res) { 
+			log(res); 
+		})
+		.error(function(err) { 
+			console.error(err); 
+		});
 	})
 	.error(function(err) { 
 		console.error(err); 
 	});
 	
-	uber.requests.getCurrentAsync()
-	.then(function(res) { 
-		log(res); 
-	})
-	.error(function(err) { 
-		console.error(err); 
-	});
+	
 });
 
 //	Retrieve home and work address from user profile
@@ -161,7 +162,6 @@ app.get('/api/places', function(request, response) {
 	.error(function(err) { 
 		console.error(err); 
 	});
-	
 	
 	uber.places.getWorkAsync()
 	.then(function(res) { 

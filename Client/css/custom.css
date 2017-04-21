@@ -11,3 +11,12 @@ button {
 .container, .container-fluid {
 	background-color: black;
 }
+button {
+	background-color: #002d3d;
+	color: white;
+}
+#menu-glyph {
+	background-color: #002d3d;
+	color: white;
+	border: 1px solid #002d3d;
+}
