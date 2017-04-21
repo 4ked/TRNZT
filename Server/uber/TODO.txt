@@ -1,8 +1,9 @@
--	check redirect callback
+-	check redirect callback (line 63)
 		current:	response.redirect('../Client/index.html');
 		questioned:	GET https://your-redirect-uri/?code=AUTHORIZATION_CODE
 	
 - 	product_id ???
 
--	check line 164
-		does previous function finish it, or can you insert it >163
+-	check line 107
+		does previous function finish it, or can you insert it >106
+		same w/ 145 and 165
