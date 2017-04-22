@@ -2,14 +2,21 @@
 
 Rather than worrying about your next transport, Tranzyt makes things simple. Select your ride options, and you're set, everything you could imagine is available around you. Easily see what's currently available and at what cost, even the amount of time it's going to take.
 
-# Installed Packages
+Installed Packages
+------------
 
+- Bluebird
 - Body Parser
+- Chai
 - Cookie Parser
 - Express
 - Fs-Extra
+- Geocoder
 - MongoDB
+- Nock
 - Node-uber
+- OAuth
+- Qs
 - Request
 - Socket.io
 
