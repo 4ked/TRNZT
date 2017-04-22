@@ -1,8 +1,20 @@
 // 	Storage for ALL uber API requests
 
 var express 		= require('express'); // web server
-var Uber 			= require('node-uber'); // import uber api
+var fs 				= require('fs-extra');
 var geocoder		= require('geocoder'); // coordinate geocoder
+var request 		= require('request'); // http trafficer
+var Uber 			= require('node-uber'); // import uber api
+var OAuth 			= require('oauth'); // oauth api
+var Promise 		= require('bluebird');
+var util 			= require('util');
+
+var qs 				= require('qs'); // querystring parsing
+var assert 			= require('assert');
+
+var chai			= require('chai'); // Node assertion library
+var nock			= require('nock'); // http isolated requests
+var should 			= chai.should();
 
 
 // logger that prevents circular object reference in javascript
@@ -32,16 +44,36 @@ var log = function(msg, obj) {
     }
 };
 
+var key = {
+  	"client_id": "LJGpana69PX47lPLFP5PpIdySYT5CT-G",
+  	"client_secret": "mgtzL4Ok7Ibyfb4ecvO-PpQhQJbgTLF3SC_vS8RN",
+  	"server_token": "Drp9ApEpmWdRKUIsf3CS3RGCmvo-tTDRGzYV6BDv",
+  	"redirect_uri": "https://local.info:3000",
+  	"name": "TRNZT",
+  	"language": "en_US", // optional, defaults to en_US
+};
 
-var uber = new Uber({
-  	client_id: 'LJGpana69PX47lPLFP5PpIdySYT5CT-G',
-  	client_secret: 'mgtzL4Ok7Ibyfb4ecvO-PpQhQJbgTLF3SC_vS8RN',
-  	server_token: 'Drp9ApEpmWdRKUIsf3CS3RGCmvo-tTDRGzYV6BDv',
-  	redirect_uri: 'https://local.info:3000',
-  	name: 'TRNZT',
-  	language: 'en_US', // optional, defaults to en_US
-  	sandbox: true // optional, defaults to false
-});
+var uber = new Uber(key);
+
+// uber instance for Sandbox mode
+key.sandbox = true;
+var uber_sandbox = new Uber(key);
+
+// JSON path for reply files
+jsonReplyPath = function(filename) {
+    return path.join(__dirname, '/replies/' + filename + '.json');
+}
+
+// Load JSON file from replies folder for assertions
+jsonReply = function(path) {
+    return JSON.parse(fs.readFileSync(this.jsonReplyPath(path), 'utf8'));
+}
+
+/************************************
+*****
+*****	Uber API Requests
+*****
+************************************/
 
 //	Authenticate uber login with scopes
 app.get('/api/login', function(request, response) {
@@ -51,7 +83,9 @@ app.get('/api/login', function(request, response) {
 
 //	Redirect script to authorize uber profile with oAuth 2.0
 app.get('/api/callback', function(request, response) {
-   	uber.authorizationAsync({authorization_code: request.query.code})
+   	uber.authorizationAsync( {
+		authorization_code: request.query.code
+	})
    	.spread(function(access_token, refresh_token, authorizedScopes, tokenExpiration) {
    	  	// store the user id and associated access_token, refresh_token, scopes and token expiration date
    	  	log('New access_token retrieved: ' + access_token);
@@ -59,9 +93,14 @@ app.get('/api/callback', function(request, response) {
    	  	log('... token is valid until: ' + tokenExpiration);
    	  	log('... after token expiration, re-authorize using refresh_token: ' + refresh_token);
 		
-   	  	// redirect the user back to your actual app
-   	  	response.redirect('../Client/index.html');
+		var query = url.parse(request.url, true).query;
+		return uber.products.getAllForLocationAsync(query.lat, query.lng);
    	})
+	.then(function(res) {
+		log(res);
+		// redirect the user back to your actual app
+   	  	response.redirect('../Client/index.html');
+	})
    	.error(function(err) {
    	  	console.error(err);
    	});
@@ -171,3 +210,20 @@ app.get('/api/places', function(request, response) {
 		console.error(err); 
 	});
 });
+
+/************************************
+*****
+*****	Exports
+*****
+************************************/
+
+exports.chai = chai;
+exports.nock = nock;
+exports.request = request;
+exports.should = should;
+exports.qs = qs;
+exports.uber = uber;
+exports.uber_sandbox = uber_sandbox;
+exports.key = key;
+exports.jsonReplyPath = jsonReplyPath;
+exports.jsonReply = jsonReply;
