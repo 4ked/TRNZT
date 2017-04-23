@@ -1,7 +1,7 @@
 var map, infoWindow;
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 16,
+		zoom: 15,
 		styles:  [
 		  {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
           {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},

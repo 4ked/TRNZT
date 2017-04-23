@@ -211,6 +211,18 @@ app.get('/api/places', function(request, response) {
 	});
 });
 
+/**********	 Posts	****************/
+
+// Login token Create
+app.post('https://local.info/:oauth/v2/:token', function(data) {
+	
+});
+
+// Ride Request Create
+app.post('https://local.info/v1.2/:requests', function(data) {
+	
+});
+
 /************************************
 *****
 *****	Exports

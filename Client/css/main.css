@@ -29,10 +29,17 @@ body {
 #map {
     height: 500px;
 }
-#features {
-	background: white;
+#connect {
+	background: #515c6d;
 	height: 150px;
 	border: 25px solid black;
+}
+#connect-button {
+	color: #d59563;
+	border: 3px solid #6b9a76;
+	border-radius: 5px;
+	margin-left: 44%;
+	margin-top: 35px;
 }
 .footer {
 	height: 300px;
