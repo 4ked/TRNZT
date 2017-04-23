@@ -1,3 +1,4 @@
+/*
 // 	Storage for ALL uber API requests
 
 var express 		= require('express'); // web server
@@ -74,7 +75,7 @@ jsonReply = function(path) {
 *****	Uber API Requests
 *****
 ************************************/
-
+/*
 //	Authenticate uber login with scopes
 app.get('/api/login', function(request, response) {
   	var url = uber.getAuthorizeUrl(['profile', 'request', 'places', 'all_trips', 'ride_widgets']);
@@ -212,7 +213,7 @@ app.get('/api/places', function(request, response) {
 });
 
 /**********	 Posts	****************/
-
+/*
 // Login token Create
 app.post('https://local.info/:oauth/v2/:token', function(data) {
 	
@@ -228,7 +229,7 @@ app.post('https://local.info/v1.2/:requests', function(data) {
 *****	Exports
 *****
 ************************************/
-
+/*
 exports.chai = chai;
 exports.nock = nock;
 exports.request = request;
