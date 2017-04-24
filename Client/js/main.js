@@ -113,3 +113,45 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                           'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
 }  
+
+
+// logger that prevents circular object reference in javascript
+var log = function(msg, obj) {
+    console.log('\n');
+    if(obj) {
+        try {
+            console.log(msg + JSON.stringify(obj));
+        } catch(err) {
+            var simpleObject = {};
+            for (var prop in obj ){
+                if (!obj.hasOwnProperty(prop)){
+                    continue;
+                }
+                if (typeof(obj[prop]) == 'object'){
+                    continue;
+                }
+                if (typeof(obj[prop]) == 'function'){
+                    continue;
+                }
+                simpleObject[prop] = obj[prop];
+            }
+            console.log('circular-' + msg + JSON.stringify(simpleObject)); // returns cleaned up JSON
+        }        
+    } else {
+        console.log(msg);
+    }
+};
+
+/***** Data Manipulation Sect *****/
+
+var address = {};
+
+var address.street 		= document.getElementById("address");
+var address.city 		= document.getElementById("city");
+var address.state 		= document.getElementById("state");
+var address.zip 		= document.getElementById("zipcode");
+var address.text = address.street + ", " + address.city + ", " + address.state + ", " + address.zip;
+
+function endpointCreate() {
+	log(address);
+}

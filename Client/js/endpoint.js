@@ -3,6 +3,8 @@ var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var route = express.Router()
 
+var geocoder = require('geocoder');
+
 
 // logger that prevents circular object reference in javascript
 var log = function(msg, obj) {
