@@ -21,4 +21,12 @@ Installed Packages
 - Request
 - Socket.io
 
+Running
+------------
+Assuming you have already cloned the directory, to bypass google chromes security protocols for self signed certificates(which we are using), we must make a few minor changes. In order to run the app on local.info with https routes you will need to disable the [chrome QUIC protocol](chrome://flags/#enable-quic). Note that additionally you must make sure that the local.info target IP is not in your host file. You can check by opening terminal and entering:
+```sh
+sudo vim /etc/hosts 
+```
+
+
 **- Built by Max Goeke**
