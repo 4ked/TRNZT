@@ -1,4 +1,3 @@
-/*
 // 	Storage for ALL uber API requests
 
 var express 		= require('express'); // web server
@@ -45,6 +44,7 @@ var log = function(msg, obj) {
     }
 };
 
+
 var key = {
   	"client_id": "LJGpana69PX47lPLFP5PpIdySYT5CT-G",
   	"client_secret": "mgtzL4Ok7Ibyfb4ecvO-PpQhQJbgTLF3SC_vS8RN",
@@ -75,15 +75,16 @@ jsonReply = function(path) {
 *****	Uber API Requests
 *****
 ************************************/
-/*
+
 //	Authenticate uber login with scopes
-app.get('/api/login', function(request, response) {
+app.get('/v1/login', function(request, response) {
   	var url = uber.getAuthorizeUrl(['profile', 'request', 'places', 'all_trips', 'ride_widgets']);
   	response.redirect(url);
+	log(url);
 });
 
 //	Redirect script to authorize uber profile with oAuth 2.0
-app.get('/api/callback', function(request, response) {
+app.get('/v1/callback', function(request, response) {
    	uber.authorizationAsync( {
 		authorization_code: request.query.code
 	})
@@ -108,7 +109,7 @@ app.get('/api/callback', function(request, response) {
 });
 
 //	Display uber products available at current given location
-app.get('/api/products', function(request, response) {
+app.get('/v1/products', function(request, response) {
   	// extract the query from the request URL
   	var query = url.parse(request.url, true).query;
 	
@@ -128,7 +129,7 @@ app.get('/api/products', function(request, response) {
 });
 
 // 	Get an upfront fare before requesting a ride
-app.get('/api/estimates', function(request, response) {
+app.get('/v1/estimates/price', function(request, response) {
   	// extract the query from the request URL
   	var query = url.parse(request.url, true).query;
 	
@@ -144,17 +145,28 @@ app.get('/api/estimates', function(request, response) {
 			  console.error(err);
 		  });
   	}
-	uber.estimates.getETAForLocationAsync(end_latitude, end_longitude)
-	.then(function(res) {
+});
+
+app.get('/v1/estimates/time', function(request, response) {
+	// extract the query from the request URL
+  	var query = url.parse(request.url, true).query;
+	
+  	// if no query params sent, respond with Bad Request
+  	if (!query || !query.lat || !query.lng) {
+  	  response.sendStatus(400);
+  	} else { 
+		  uber.estimates.getETAForLocationAsync(end_latitude, end_longitude)
+		.then(function(res) {
 		response.json(res); 
-	})
-	.error(function(err) {
+		})
+		.error(function(err) {
 		console.error(err);
-	});
+		});
+  	}
 });
 
 //	Get profile information on user that authorized app
-app.get('/api/me', function(request, response) {
+app.get('/v1/me', function(request, response) {
 	uber.user.getProfileAsync()
 	.then(function(res) { 
 		log(res); 
@@ -165,7 +177,7 @@ app.get('/api/me', function(request, response) {
 });
 
 //	Request a ride on behalf of an uber user
-app.get('/api/requests', function(request, response) {
+app.get('/v1/requests', function(request, response) {
 	// extract the query from the request URL
   	var query = url.parse(request.url, true).query;
 	
@@ -190,11 +202,10 @@ app.get('/api/requests', function(request, response) {
 		console.error(err); 
 	});
 	
-	
 });
 
 //	Retrieve home and work address from user profile
-app.get('/api/places', function(request, response) {
+app.get('/v1/places/{place_id}', function(request, response) {
 	uber.places.getHomeAsync()
 	.then(function(res) { 
 		log(res); 
@@ -213,7 +224,7 @@ app.get('/api/places', function(request, response) {
 });
 
 /**********	 Posts	****************/
-/*
+
 // Login token Create
 app.post('https://local.info/:oauth/v2/:token', function(data) {
 	
@@ -229,7 +240,7 @@ app.post('https://local.info/v1.2/:requests', function(data) {
 *****	Exports
 *****
 ************************************/
-/*
+
 exports.chai = chai;
 exports.nock = nock;
 exports.request = request;

@@ -10,6 +10,7 @@ Installed Packages
 - Chai
 - Cookie Parser
 - Express
+- Express-validator
 - Fs-Extra
 - Geocoder
 - MongoDB
