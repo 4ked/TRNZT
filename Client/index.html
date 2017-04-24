@@ -102,7 +102,35 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="footer">
-					
+					<div class="col-sm-4">
+						<div id="address-form">
+							<form action="../Server/uber/replies/user.txt" method="get">
+								Address:<br>
+								<input type="text" name="address">
+								City:<br>
+								<input type="text" name="city">
+								State:<br>
+								<input type="text" name="state">
+								ZIP:<br>
+								<input type="text" name="zipcode">
+								<input type="submit" value="Submit" id="submit">
+							</form>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div id="price-estimate">
+						<a href="https://local.info/api/estimates">
+							<button id="price-button">Get a price estimate</button>
+						</a>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div id="ride-request">
+							<a href="https://local.info/api/requests">
+								<button id="request-button">Request a Ride</button>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

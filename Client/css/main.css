@@ -46,3 +46,44 @@ body {
 	background-color: #002d3d;
 	border: 10px solid black;
 }
+#address-form {
+	width: 58%;
+	height: 240px;
+	color: #d59563;
+	display: inline-block;
+	margin-left: 1%;
+	margin-top: 20px;
+}
+form {
+	margin: none;
+	padding: 5px;
+	border: 1px solid #d59563
+}
+#submit {
+	margin-top: 15px;
+	margin-left: 27%;
+}
+#price-estimate {
+	display: inline-block;
+	width: 100%;
+}
+#price-button {
+	background-color: #d59563;
+	color: #515c6d;
+	border: 3px solid #515c6d;
+	border-radius: 5px;
+	margin-left: 26%;
+	margin-top: 100px;
+}
+#ride-request {
+	display: inline-block;
+	width: 80%;
+}
+#request-button {
+	background-color: #d59563;
+	color: #515c6d;
+	border: 3px solid #515c6d;
+	border-radius: 5px;
+	margin-top: 100px;
+	margin-left: 29%;
+}
