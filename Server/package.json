@@ -1,7 +1,7 @@
 {
   "name": "TRNZT",
   "version": "0.0.1",
-  "description": "A new flavour of uber",
+  "description": "A new wrapper for uber",
   "repository": {
     "type": "git",
     "url": "https://github.com/4ked/TRNZT"

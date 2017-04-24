@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="../Server/uber/replies/endpoint.js" async></script>
+	<script src="../Server/uber/uber.js" async></script>   
 </head>
 <body>
 	<div id="main" class="container-fluid">
@@ -119,14 +121,14 @@
 					</div>
 					<div class="col-sm-4">
 						<div id="price-estimate">
-						<a href="https://local.info/api/estimates">
+						<a href="https://local.info/1.2/estimates/price">
 							<button id="price-button">Get a price estimate</button>
 						</a>
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<div id="ride-request">
-							<a href="https://local.info/api/requests">
+							<a href="https://local.info/1.2/requests">
 								<button id="request-button">Request a Ride</button>
 							</a>
 						</div>
@@ -142,8 +144,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 	<script src="js/main.js"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV389xIQQoed4u7xGhy6sieHtgw0L7vOQ&callback=initMap"></script>
-	<script src="../Server/uber/uber.js"></script>
-	<script src="../Server/uber/replies/endpoint.js"></script>
 </body>
 </html>
 
