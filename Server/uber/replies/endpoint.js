@@ -12,9 +12,25 @@ app.use(expressValidator());
 
 req.sanitizeBody('name').escape();
 
+var addressInput 	= document.getElementById("address");
+var cityInput 		= document.getElementById("city");
+var stateInput 		= document.getElementById("state");
+var zipInput 		= document.getElementById("zipcode");
 
+var address = [
+	addressInput, 
+	cityInput, 
+	stateInput, 
+	zipInput
+];
 
-
+function endpointCreate() {
+	address.push(addressInput);
+	address.push(cityInput);
+	address.push(stateInput);
+	address.push(zipInput);
+	console.log(address);
+}
 
 
 

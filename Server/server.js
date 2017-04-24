@@ -102,5 +102,5 @@ http.createServer(function(req, res) {
     }
 }).listen(8080);
 
-log('ready to serve');
+log('TRNZT running on local.info');
 

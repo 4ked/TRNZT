@@ -106,11 +106,11 @@
 						<div id="address-form">
 							<form action="../Server/uber/replies/endpoint.js" method="post">
 								Address:<br>
-								<input type="text" name="address">
+								<input type="text" name="address" id="address">
 								City:<br>
-								<input type="text" name="city">
+								<input type="text" name="city" id="city">
 								State:<br>
-								<input type="text" name="state">
+								<input type="text" name="state" id="state">
 								ZIP:<br>
 								<input type="text" name="zipcode">
 								<input type="submit" value="Submit" id="submit">
@@ -141,9 +141,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
 	<script src="js/main.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV389xIQQoed4u7xGhy6sieHtgw0L7vOQ&callback=initMap"></script>
 	<script src="../Server/uber/uber.js"></script>
 	<script src="../Server/uber/replies/endpoint.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV389xIQQoed4u7xGhy6sieHtgw0L7vOQ&callback=initMap"></script>
 </body>
 </html>
 
