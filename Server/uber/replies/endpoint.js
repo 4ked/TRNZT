@@ -4,6 +4,33 @@ var expressValidator = require('express-validator');
 var route = express.Router()
 
 
+// logger that prevents circular object reference in javascript
+var log = function(msg, obj) {
+    console.log('\n');
+    if(obj) {
+        try {
+            console.log(msg + JSON.stringify(obj));
+        } catch(err) {
+            var simpleObject = {};
+            for (var prop in obj ){
+                if (!obj.hasOwnProperty(prop)){
+                    continue;
+                }
+                if (typeof(obj[prop]) == 'object'){
+                    continue;
+                }
+                if (typeof(obj[prop]) == 'function'){
+                    continue;
+                }
+                simpleObject[prop] = obj[prop];
+            }
+            console.log('circular-' + msg + JSON.stringify(simpleObject)); // returns cleaned up JSON
+        }        
+    } else {
+        console.log(msg);
+    }
+};
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( 
 	{ extended: false })
@@ -26,7 +53,7 @@ function endpointCreate() {
 	address.push(cityInput);
 	address.push(stateInput);
 	address.push(zipInput);
-	console.log(address);
+	log(address);
 }
 
-module.exports = route
+module.exports = route;

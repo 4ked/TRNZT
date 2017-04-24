@@ -3,6 +3,7 @@ var http 			= require('http'); // http protocol
 var https 			= require('https'); // https protocol
 var Mongo      		= require('mongodb').MongoClient;
 var express 		= require('express'); // web server
+var expressValidator = require('express-validator');
 var cookieParser 	= require('cookie-parser'); // parse cookies
 var socketio 		= require('socket.io'); // websocket
 var request 		= require('request'); // http trafficer
@@ -22,6 +23,7 @@ var should 			= chai.should();
 
 // web server
 var app = express();
+var route = express.Router(); // add support for express routing
 app.use(cookieParser());
 
 var server = http.Server(app);
