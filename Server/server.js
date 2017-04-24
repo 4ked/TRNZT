@@ -321,6 +321,11 @@ exports.jsonReply = jsonReply;
 *****
 ************************************/
 
-geocoder.geocode(address.txt, function(err,data) {
-	
+app.post('/api/endpoint', function(req,res) {
+	var address = req.body;
+	geocoder.geocode(address.txt, function(err,data) {
+		log(address.txt);
+	});
+	res.send('yoyoyoyo');
 });
+

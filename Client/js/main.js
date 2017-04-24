@@ -142,16 +142,56 @@ var log = function(msg, obj) {
     }
 };
 
+/***** Generic Ops Settings *****/
+
+function route(url) {
+  return 'https://local.info:3000' + url;
+}
+
+var http = {};
+
+http.post = function(url, json, success, error) {
+	$.ajax({
+		url: route(url),
+		method: 'POST',
+		data: json,
+		//headers: {
+		//	'Authorization': authResponse.id_token
+		//},
+		success: function(data, statusText, jqXHR) {
+			if (success) success(data, statusText, jqXHR);
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			if (error) error(jqXHR, textStatus, errorThrown);
+		}
+	});
+};
+
 /***** Data Manipulation Sect *****/
 
 var address = {};
+address.location = {}; // where the user currently is
+address.destination = {}; // entered end destination
 
-var address.street 		= document.getElementById("address");
-var address.city 		= document.getElementById("city");
-var address.state 		= document.getElementById("state");
-var address.zip 		= document.getElementById("zipcode");
-var address.text = address.street + ", " + address.city + ", " + address.state + ", " + address.zip;
+address.destination.street 		= $("#address").text();
+address.destination.city 		= $("#city").text();
+address.destination.state 		= $("#state").text();
+address.destination.zip 		= $("#zipcode").text();
+address.destination.txt = address.destination.street + ", " + address.destination.city + ", " + address.destination.state + ", " + address.destination.zip;
 
 function endpointCreate() {
 	log(address);
-}
+	http.post('/api/endpoint', address,
+	function() { // success
+		log('it worked');
+	},
+    function() { // error
+		log("it didn't work :(");
+	});
+};
+
+
+$(document).ready(function() {
+	$('#address-form-button').click(endpointCreate);
+
+});

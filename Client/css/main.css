@@ -59,10 +59,6 @@ form {
 	padding: 5px;
 	border: 1px solid #d59563
 }
-#submit {
-	margin-top: 15px;
-	margin-left: 27%;
-}
 #price-estimate {
 	display: inline-block;
 	width: 100%;
@@ -86,4 +82,8 @@ form {
 	border-radius: 5px;
 	margin-top: 100px;
 	margin-left: 29%;
+}
+#address-form-button {
+	margin-top: 15px;
+	margin-left: 27%;
 }
