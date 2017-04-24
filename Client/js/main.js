@@ -171,6 +171,55 @@ http.post = function(url, json, success, error) {
 	});
 };
 
+http.get = function(url, success, error) {
+    $.ajax({
+        url: route(url),
+        method: 'GET',
+        headers: {
+            'Authorization': authResponse.id_token
+        },
+        success: function(data, statusText, jqXHR) {
+            if (success) success(data, statusText, jqXHR);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (error) error(jqXHR, textStatus, errorThrown);
+        }
+    });
+};
+
+http.put = function(url, json, success, error) {
+    $.ajax({
+        url: route(url),
+        method: 'PUT',
+        data: json,
+        headers: {
+            'Authorization': authResponse.id_token
+        },
+        success: function(data, statusText, jqXHR) {
+            if (success) success(data, statusText, jqXHR);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (error) error(jqXHR, textStatus, errorThrown);
+        }
+    });
+};
+
+http.delete = function(url, success, error) {
+    $.ajax({
+        url: route(url),
+        method: 'DELETE',
+        headers: {
+            'Authorization': authResponse.id_token
+        },
+        success: function(data, statusText, jqXHR) {
+            if (success) success(data, statusText, jqXHR);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (error) error(jqXHR, textStatus, errorThrown);
+        }
+    });
+};
+
 /************************************
 *****
 *****	Data Manipulation Sect
@@ -188,10 +237,10 @@ address.destination.zip 		= $("#zipcode").text();
 address.destination.txt = address.destination.street + ", " + address.destination.city + ", " + address.destination.state + ", " + address.destination.zip;
 
 function endpointCreate() {
-	log(address);
 	http.post('/api/endpoint', address,
 	function() { // success
 		log('yo it worked!');
+		log(address.destination.txt);
 	},
     function() { // error
 		log("it didn't work :(");
