@@ -23,10 +23,18 @@ Installed Packages
 
 Running
 ------------
-Assuming you have already cloned the directory, to bypass google chromes security protocols for self signed certificates(which we are using), we must make a few minor changes. In order to run the app on local.info with https routes you will need to disable the [chrome QUIC protocol](chrome://flags/#enable-quic). Note that additionally you must make sure that the local.info target IP is not in your host file. You can check by opening terminal and entering:
+Assuming you have already cloned the directory, to bypass google chromes security protocols for self signed certificates(which we are using), we must make a few minor changes. 
+
+In order to run the app on local.info with https routes you will need to disable the chrome QUIC protocol. From the chrome browser enter:
+```sh
+chrome://flags/#enable-quic 
+```
+Note that additionally you must make sure that the local.info target IP is not in your host file. You can check by opening terminal and entering:
 ```sh
 sudo vim /etc/hosts 
 ```
+> **Note**: You must be in your root directory for this command to work
 
+Now TRNZT should be able to run on https://local.info:3000
 
 **- Built by Max Goeke**
