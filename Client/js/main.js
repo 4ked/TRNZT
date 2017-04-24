@@ -142,7 +142,11 @@ var log = function(msg, obj) {
     }
 };
 
-/***** Generic Ops Settings *****/
+/************************************
+*****
+*****	Generic Ops stuff
+*****
+************************************/
 
 function route(url) {
   return 'https://local.info:3000' + url;
@@ -167,7 +171,11 @@ http.post = function(url, json, success, error) {
 	});
 };
 
-/***** Data Manipulation Sect *****/
+/************************************
+*****
+*****	Data Manipulation Sect
+*****
+************************************/
 
 var address = {};
 address.location = {}; // where the user currently is
@@ -183,7 +191,7 @@ function endpointCreate() {
 	log(address);
 	http.post('/api/endpoint', address,
 	function() { // success
-		log('it worked');
+		log('yo it worked!');
 	},
     function() { // error
 		log("it didn't work :(");
