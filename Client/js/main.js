@@ -226,11 +226,7 @@ http.delete = function(url, success, error) {
 *****
 ************************************/
 
-$(document).ready(function() {
-	$('#address-form-button').click(endpointCreate);
-
-});
-
+/*
 function endpointCreate() {
 	var address = {};
 	address.location = {}; // where the user currently is
@@ -255,4 +251,51 @@ function endpointCreate() {
 		log("it didn't work:(")
 	});
 };
+*/
+
+$(document).ready(function() {
+	// $('#address-form-button').click(endpointCreate);
+	
+	var button = document.getElementById('address-form-button');
+
+	button.addEventListener("click", function () {
+		var address = document.getElementById('address').value;
+		getLatitudeLongitude(showResult, address)
+	});
+
+});
+
+function showResult(result) {
+    document.getElementById('endLat').value = result.geometry.location.lat();
+    document.getElementById('endLon').value = result.geometry.location.lng();
+	
+}
+
+function getLatitudeLongitude(callback, address) {
+    
+	var address = {};
+	address.location = {}; // where the user currently is
+	address.destination = {}; // entered end destination
+
+	address.destination.street 		= $("#address").val();
+	address.destination.city 		= $("#city").val();
+	address.destination.state 		= $("#state").val();
+	address.destination.zip 		= $("#zip").val();
+	address.destination.txt 		= address.destination.street + ", " + address.destination.city + ", " + address.destination.state + ", " + address.destination.zip;
+	
+	address = address.destination.txt;
+    // Initialize the Geocoder
+    geocoder = new google.maps.Geocoder();
+    if (geocoder) {
+        geocoder.geocode({
+            'address': address
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                callback(results[0]);
+            }
+        });
+    }
+}
+
+
 

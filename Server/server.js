@@ -320,17 +320,15 @@ exports.jsonReply = jsonReply;
 *****	Geocoder pulled from main.js
 *****
 ************************************/
-
+/*
 app.post('/api/endpoint', function(req,res) {
 	var address = req.body;
-	// var lat1, lon1;
-	// var d = distance(lat1,lon1,lat2,lon2);
-	geocoder.geocode(address, function(err,data) {
-		log(address);
-	});
+	var userAddress = address.destination;
+	
+	log(userAddress);
 	res.status(200).send(address);
 });
-
+*/
 /************************************
 *****
 *****	Geo Distance algorithm
