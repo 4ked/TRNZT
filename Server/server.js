@@ -326,10 +326,10 @@ const end_lng 		= 0;
 
 app.post('/api/endpoint', function(req,res) {
 	var address = req.body;
-	geocoder.geocode(address.txt, function(err,data) {
-		log(address.txt);
+	geocoder.geocode(address, function(err,data) {
+		log(address);
 	});
-	res.send('yoyoyoyo');
+	res.send(address);
 });
 
 /************************************

@@ -226,6 +226,11 @@ http.delete = function(url, success, error) {
 *****
 ************************************/
 
+$(document).ready(function() {
+	$('#address-form-button').click(endpointCreate());
+
+});
+
 var address = {};
 address.location = {}; // where the user currently is
 address.destination = {}; // entered end destination
@@ -234,7 +239,7 @@ address.destination.street 		= $("#address").text();
 address.destination.city 		= $("#city").text();
 address.destination.state 		= $("#state").text();
 address.destination.zip 		= $("#zipcode").text();
-address.destination.txt = address.destination.street + ", " + address.destination.city + ", " + address.destination.state + ", " + address.destination.zip;
+address.destination.txt 		= address.destination.street + ", " + address.destination.city + ", " + address.destination.state + ", " + address.destination.zip;
 
 function endpointCreate() {
 	http.post('/api/endpoint', address,
@@ -247,8 +252,3 @@ function endpointCreate() {
 	});
 };
 
-
-$(document).ready(function() {
-	$('#address-form-button').click(endpointCreate);
-
-});
