@@ -227,28 +227,32 @@ http.delete = function(url, success, error) {
 ************************************/
 
 $(document).ready(function() {
-	$('#address-form-button').click(endpointCreate());
+	$('#address-form-button').click(endpointCreate);
 
 });
 
-var address = {};
-address.location = {}; // where the user currently is
-address.destination = {}; // entered end destination
-
-address.destination.street 		= $("#address").text();
-address.destination.city 		= $("#city").text();
-address.destination.state 		= $("#state").text();
-address.destination.zip 		= $("#zipcode").text();
-address.destination.txt 		= address.destination.street + ", " + address.destination.city + ", " + address.destination.state + ", " + address.destination.zip;
-
 function endpointCreate() {
-	http.post('/api/endpoint', address.destination,
-	function() { // success
-		log('yo it worked!');
-		log(address.destination.txt);
+	var address = {};
+	address.location = {}; // where the user currently is
+	address.destination = {}; // entered end destination
+
+	address.destination.street 		= $("#address").val();
+	address.destination.city 		= $("#city").val();
+	address.destination.state 		= $("#state").val();
+	address.destination.zip 		= $("#zip").val();
+	address.destination.txt 		= address.destination.street + ", " + address.destination.city + ", " + address.destination.state + ", " + address.destination.zip;
+
+	http.post('/api/endpoint', address,
+	function(data, statusText, jqXHR) { // success
+		if(jqXHR.status === 200) {
+			// then it worked for sure - b/c your server said it was a good request
+			log("we in");
+			log(address.destination.txt);
+		}
 	},
     function() { // error
-		log("it didn't work :(");
+		//todo: error
+		log("it didn't work:(")
 	});
 };
 

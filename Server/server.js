@@ -321,15 +321,14 @@ exports.jsonReply = jsonReply;
 *****
 ************************************/
 
-const end_lat 		= 0;
-const end_lng 		= 0;
-
 app.post('/api/endpoint', function(req,res) {
 	var address = req.body;
+	// var lat1, lon1;
+	// var d = distance(lat1,lon1,lat2,lon2);
 	geocoder.geocode(address, function(err,data) {
 		log(address);
 	});
-	res.send(address);
+	res.status(200).send(address);
 });
 
 /************************************
