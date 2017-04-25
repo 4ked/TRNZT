@@ -37,14 +37,15 @@ sudo vim /etc/hosts
 
 Now TRNZT should be able to run on https://local.info:3000
 
-Outside Sources
+Credits
 ------------
+**Outside Sources**
 - J.W. Clark's [OpGenerics](https://github.com/JamesWClark/OpGenerics) repo
 - Shernshiou's [Node-uber sdk](https://github.com/shernshiou/node-uber) for a Node.js version of the uber API
 - Salvador Dali's [Geo Distance Formula](http://stackoverflow.com/users/1090562/salvador-dali) for calculating the distance between 2 points
 - J.W. Clark's [https server route](https://github.com/JamesWClark/TC/blob/master/server.js) to enable https on local.info
 
-API USES
+**API Uses**
 - [UBER](https://developer.uber.com/docs/riders/introduction)
 - [Express](https://expressjs.com/en/4x/api.html)
 - [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
