@@ -42,7 +42,7 @@ Credits
 **Outside Sources**
 - J.W. Clark's [OpGenerics](https://github.com/JamesWClark/OpGenerics) repo
 - Shernshiou's [Node-uber sdk](https://github.com/shernshiou/node-uber) for a Node.js version of the uber API
-- Salvador Dali's [Geo Distance Formula](http://stackoverflow.com/users/1090562/salvador-dali) for calculating the distance between 2 points
+- Salvador Dali's [Geo Distance Algorithm](http://stackoverflow.com/users/1090562/salvador-dali) for calculating the distance between 2 points
 - J.W. Clark's [https server route](https://github.com/JamesWClark/TC/blob/master/server.js) to enable https on local.info
 
 **API Uses**

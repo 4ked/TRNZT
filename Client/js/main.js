@@ -242,7 +242,7 @@ address.destination.zip 		= $("#zipcode").text();
 address.destination.txt 		= address.destination.street + ", " + address.destination.city + ", " + address.destination.state + ", " + address.destination.zip;
 
 function endpointCreate() {
-	http.post('/api/endpoint', address,
+	http.post('/api/endpoint', address.destination,
 	function() { // success
 		log('yo it worked!');
 		log(address.destination.txt);
