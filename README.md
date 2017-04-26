@@ -30,7 +30,9 @@ Usage
 ------------
 TRNZT was written on https, which uses SSL certs specific to each project. So in order for you to get TRNZT working, you will need to get your own.
 
-The first step is requesting a self signed certificate. Inside the Server file run:
+
+### Step one: Requesting a Self Signed Certificate
+Inside the Server file run:
 ```sh
 openssl genrsa -out key.pem 2048
 openssl req -new -key key.pem -out client.csr
@@ -40,24 +42,32 @@ openssl x509 -req -in client.csr -signkey key.pem -out cert.pem
 
 For  more information, go to the [setups-https.sh](https://github.com/4ked/TRNZT/blob/master/setup-https.sh) bash script
 
+### Step two: Bypassing the Chrome QUIC Protocol
 Now that we've written ourselves a certificate, we need to make a few changes to settings on the chrome browser and your machine to enable a successful run...
 
 To bypass modern web browser security risks with self signed certificates you will need to disable the chrome QUIC protocol. From the chrome browser enter:
 ```sh
 chrome://flags/#enable-quic 
 ```
-Note that additionally you must make sure that the local.info target IP is not in your host file. You can check by opening terminal and entering:
+
+### Step three: Deleting your target IP from the host file
+Additionally you must make sure that the local.info target IP is not in your host file. You can check by opening terminal and entering:
 ```sh
 sudo vim /etc/hosts 
 ```
 > **Note**: You must be in your root directory
 
-Now TRNZT should be able to run on https://local.info:3000, but we aren't done yet. The final steps are requesting your own API keys.
+Now TRNZT should be able to run on https://local.info:3000, speaking for the server at least.
+
+### Step four: Getting the necessary API keys
+In order for your own modifications to work you will need to get your own API keys/ accounts, but don't worry the process is straight forward.
 
 ##### Thankfully there are only two of these...
 * [Google Maps API](https://developers.google.com/maps/documentation/javascript/), click the link and select 'Get a key'
 * [Uber App API](https://get.uber.com/new-signup/?source=auth&next_url=https%3A%2F%2Fdeveloper.uber.com%2Fdashboard%2F)
 > **Note**: Both of these are used throughout the entire TRNZT project, make sure to substitute your own keys appropriately.
+
+You are now officially capable of running TRNZT in the chrome browser on an https server, congratulations!
 
 Credits
 ------------
