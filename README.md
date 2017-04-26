@@ -1,6 +1,9 @@
-# TRNZT [![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/4ked/TRNZT) [![node.js](https://img.shields.io/badge/node.js-v6.0.0-orange.svg)](https://github.com/4ked/TRNZT) [![MyGet](https://img.shields.io/myget/mongodb/v/MongoDB.Driver.Core.svg)](https://github.com/4ked/TRNZT) [![socket.io](https://img.shields.io/badge/socket.io-v1.7.3-green.svg)](https://github.com/4ked/TRNZT)
-
-Rather than worrying about your next transport, Tranzyt makes things simple. Select your ride options, and you're set, everything you could imagine is available around you. Easily see what's currently available and at what cost, even the amount of time it's going to take.
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/4ked/TRNZT) 
+[![node.js](https://img.shields.io/badge/node.js-v6.0.0-orange.svg)](https://github.com/4ked/TRNZT) 
+[![socket.io](https://img.shields.io/badge/socket.io-v1.7.3-green.svg)](https://github.com/4ked/TRNZT)
+TRNZT
+=========
+This project is to repurpose and rebuild the uber service to expand and renew its original structure. TRNZT offers more to the user and is an open source project incoporating many smaller projects into one, allowing various parts to be picked and used elsewhere.
 
 Installed Packages
 ------------
@@ -21,11 +24,23 @@ Installed Packages
 - Request
 - Socket.io
 
-Running
+Usage
 ------------
-Assuming you have already cloned the directory, to bypass google chromes security protocols for self signed certificates(which we are using), we must make a few minor changes. 
+TRNZT's server side is based on an https route, meaning in order for this to work right out of the box you will need to modify this to your own needs. 
 
-In order to run the app on local.info with https routes you will need to disable the chrome QUIC protocol. From the chrome browser enter:
+The first step is requesting a self signed certificate. Inside the Server file run:
+```sh
+openssl genrsa -out key.pem 2048
+openssl req -new -key key.pem -out client.csr
+openssl x509 -req -in client.csr -signkey key.pem -out cert.pem
+```
+> **Note**: After the second command fill in the optional slots with your own details
+
+For  more information, [go to the setups-https.sh bash script](https://github.com/4ked/TRNZT/blob/master/setup-https.sh);
+
+Now that we've written ourselves a certificate, we need to make a few changes to settings on the chrome browser and your machine.
+
+To bypass modern web browser security risks with self signed certificates you will need to disable the chrome QUIC protocol. From the chrome browser enter:
 ```sh
 chrome://flags/#enable-quic 
 ```
@@ -52,5 +67,8 @@ Credits
 - [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
 - [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 
+LICENSE
+------------
+[MIT](https://github.com/4ked/TRNZT/blob/master/LICENSE)
 
 **- Built by Max Goeke**
