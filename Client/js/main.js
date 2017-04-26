@@ -1,3 +1,10 @@
+/************************************
+*****
+*****		Map Work
+*****
+************************************/
+var pos = {};
+
 var map, infoWindow;
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -88,11 +95,10 @@ function initMap() {
 	// Try HTML5 geolocation.
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
-			var pos = {
-				lat: position.coords.latitude,
-				lng: position.coords.longitude
-			};
-
+			
+			pos.lat = position.coords.latitude;
+			pos.lng = position.coords.longitude;
+			
 			infoWindow.setPosition(pos);
 			infoWindow.setContent('Location found.');
 			infoWindow.open(map);
@@ -114,8 +120,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.open(map);
 }  
 
-
-// logger that prevents circular object reference in javascript
+/************************************
+*****
+*****	logger that prevents circular object reference in javascript
+*****
+************************************/
 var log = function(msg, obj) {
     console.log('\n');
     if(obj) {
@@ -144,7 +153,7 @@ var log = function(msg, obj) {
 
 /************************************
 *****
-*****	Generic Ops stuff
+*****	OpGenerics stuff
 *****
 ************************************/
 
@@ -254,11 +263,15 @@ function endpointCreate() {
 };
 */
 
+
 /************************************
 *****
 *****	Geocode the target address
 *****
 ************************************/
+// establish global variables
+var goaLat;
+var goaLng;
 
 $(document).ready(function() {
 	// $('#address-form-button').click(endpointCreate);
@@ -269,11 +282,18 @@ $(document).ready(function() {
 		var address = document.getElementById('address').value;
 		getLatitudeLongitude(showResult, address)
 	});
-
+	
+	// get the current position of a user (for the distance algorithm)
+	navigator.geolocation.getCurrentPosition(function(location) {
+	  var lat1 = location.coords.latitude;
+	  var lng1 = location.coords.longitude;
+	});
 });
 
 function showResult(result) {
-    document.getElementById('endLat').value = result.geometry.location.lat();
+    goaLat = result.geometry.location.lat();
+	goaLng = result.geometry.location.lng()
+	document.getElementById('endLat').value = result.geometry.location.lat();
     document.getElementById('endLon').value = result.geometry.location.lng();
 	
 	log("it worked!");
@@ -302,6 +322,8 @@ function getLatitudeLongitude(callback, address) {
             if (status == google.maps.GeocoderStatus.OK) {
                 callback(results[0]);
 				log(address);
+				var td = distance(pos.lat, pos.lng, goaLat, goaLng, "M");
+				log("Estimated travel distance: " + td);
             }
         });
     } 
@@ -313,16 +335,25 @@ function getLatitudeLongitude(callback, address) {
 *****
 ************************************/
 
-// Purposed to calculate the actual Geo Distance between two points
-function distance(lat1, lon1, lat2, lon2) {
-  var p = 0.017453292519943295;    // Math.PI / 180
-  var c = Math.cos;
-  var a = 0.5 - c((lat2 - lat1) * p)/2 + 
-          c(lat1 * p) * c(lat2 * p) * 
-          (1 - c((lon2 - lon1) * p))/2;
+// GeoDataSource.com (C) All Rights Reserved 2015
 
-  return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+function distance(lat1, lng1, goaLat, goaLng, unit) {
+	var radlat1 = Math.PI * lat1/180
+	var radlat2 = Math.PI * goaLat/180
+	var theta = lng1-goaLng
+	var radtheta = Math.PI * theta/180
+	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+	dist = Math.acos(dist)
+	dist = dist * 180/Math.PI
+	dist = dist * 60 * 1.1515
+	if (unit=="K") { dist = dist * 1.609344 }
+	if (unit=="N") { dist = dist * 0.8684 }
+	log("end long: ", goaLng);
+	log("end lat: ", goaLat);
+	log("start long: ", lng1);
+	log("start lat: ", lat1);
+	log("Travel distance: " + dist + " miles");
+	return dist
 }
-
 
 
