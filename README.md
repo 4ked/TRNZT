@@ -7,8 +7,19 @@ TRNZT
 =========
 This project is to repurpose and rebuild the uber service to expand and renew its original structure. TRNZT offers more to the user and is an open source project incoporating many smaller projects into one, allowing various parts to be picked and used elsewhere.
 
-Installed Packages
-------------
+
+## Contents
+
+- [Installed Packages](#installed-packages)
+- [Usage](#usage)
+  	- [Requesting a Self Signed Certificate](#step-one)
+  	- [Bypassing the Chrome QUIC Protocol](#step-two)
+  	- [Deleting your target IP from the host file](#step-three)
+  	- [Getting the necessary API keys](#step-four)
+- [Credits](#credits)
+- [License](#license)
+
+## Installed Packages
 
 - Bluebird
 - Body Parser
@@ -26,8 +37,8 @@ Installed Packages
 - Request
 - Socket.io
 
-Usage
-------------
+## Usage
+
 TRNZT was written on https, which uses SSL certs specific to each project. So in order for you to get TRNZT working, you will need to get your own.
 
 
@@ -69,8 +80,8 @@ In order for your own modifications to work you will need to get your own API ke
 
 You are now officially capable of running TRNZT in the chrome browser on an https server, congratulations!
 
-Credits
-------------
+## Credits
+
 **Outside Sources**
 - J.W. Clark's [OpGenerics](https://github.com/JamesWClark/OpGenerics) repo
 - Shernshiou's [Node-uber sdk](https://github.com/shernshiou/node-uber) for a Node.js version of the uber API
@@ -84,8 +95,8 @@ Credits
 - [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
 - [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 
-LICENSE
-------------
+## LICENSE
+
 [MIT](https://github.com/4ked/TRNZT/blob/master/LICENSE)
 
 **- Built by Max Goeke**
