@@ -144,6 +144,7 @@ app.get('/v1.2/login', function(request, response) {
   	var url = uber.getAuthorizeUrl(['profile', 'request', 'places', 'all_trips', 'ride_widgets']);
   	response.redirect(url);
 	log(url);
+	// User can manually go to authorization @ https://login.uber.com/oauth/v2/authorize?client_id=LJGpana69PX47lPLFP5PpIdySYT5CT-G&response_type=code
 });
 
 //	Redirect script to authorize uber profile with oAuth 2.0
