@@ -1,6 +1,8 @@
+[![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/4ked/TRNZT/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/4ked/TRNZT) 
 [![node.js](https://img.shields.io/badge/node.js-v6.0.0-orange.svg)](https://github.com/4ked/TRNZT) 
-[![socket.io](https://img.shields.io/badge/socket.io-v1.7.3-green.svg)](https://github.com/4ked/TRNZT)
+
+
 TRNZT
 =========
 This project is to repurpose and rebuild the uber service to expand and renew its original structure. TRNZT offers more to the user and is an open source project incoporating many smaller projects into one, allowing various parts to be picked and used elsewhere.
@@ -34,11 +36,11 @@ openssl genrsa -out key.pem 2048
 openssl req -new -key key.pem -out client.csr
 openssl x509 -req -in client.csr -signkey key.pem -out cert.pem
 ```
-> **Note**: After the second command fill in the optional slots with your own details
+> **Note**: After the second command fill in the optional slots with your own project attributes
 
-For  more information, [go to the setups-https.sh bash script](https://github.com/4ked/TRNZT/blob/master/setup-https.sh);
+For  more information, go to the [setups-https.sh](https://github.com/4ked/TRNZT/blob/master/setup-https.sh) bash script
 
-Now that we've written ourselves a certificate, we need to make a few changes to settings on the chrome browser and your machine.
+Now that we've written ourselves a certificate, we need to make a few changes to settings on the chrome browser and your machine to enable a successful run...
 
 To bypass modern web browser security risks with self signed certificates you will need to disable the chrome QUIC protocol. From the chrome browser enter:
 ```sh
@@ -48,7 +50,7 @@ Note that additionally you must make sure that the local.info target IP is not i
 ```sh
 sudo vim /etc/hosts 
 ```
-> **Note**: You must be in your root directory for this command to work
+> **Note**: You must be in your root directory
 
 Now TRNZT should be able to run on https://local.info:3000
 
