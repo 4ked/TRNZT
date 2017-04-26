@@ -27,6 +27,7 @@ body {
 }
 #header-tag {
 	color: white;
+	text-decoration: none;
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 	text-align: center;
 	border-bottom: 2px solid #002d3d;
@@ -70,7 +71,7 @@ body {
 	color: #d59563;
 	display: inline-block;
 	margin-left: 4%;
-	margin-top: 20px;
+	margin-top: 15px;
 }
 form {
 	margin: none;
@@ -120,3 +121,14 @@ form {
 	margin-top: 5px;
 }
 
+
+
+/************************************
+*****
+*****	Problem solving
+*****
+************************************/
+
+a, a:hover, a:focus {
+	text-decoration: none !important;
+}

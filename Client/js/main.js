@@ -253,6 +253,12 @@ function endpointCreate() {
 };
 */
 
+/************************************
+*****
+*****	Geocode The end goal from the given
+*****
+************************************/
+
 $(document).ready(function() {
 	// $('#address-form-button').click(endpointCreate);
 	
@@ -269,6 +275,8 @@ function showResult(result) {
     document.getElementById('endLat').value = result.geometry.location.lat();
     document.getElementById('endLon').value = result.geometry.location.lng();
 	
+	log("it worked!");
+	log("lat: " + result.geometry.location.lat() + ", " + "lng: " + result.geometry.location.lng());
 }
 
 function getLatitudeLongitude(callback, address) {
@@ -292,9 +300,27 @@ function getLatitudeLongitude(callback, address) {
         }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 callback(results[0]);
+				log(address);
             }
         });
     }
+}
+
+/************************************
+*****
+*****	Geo Distance algorithm
+*****
+************************************/
+
+// Purposed to calculate the actual Geo Distance between two points
+function distance(lat1, lon1, lat2, lon2) {
+  var p = 0.017453292519943295;    // Math.PI / 180
+  var c = Math.cos;
+  var a = 0.5 - c((lat2 - lat1) * p)/2 + 
+          c(lat1 * p) * c(lat2 * p) * 
+          (1 - c((lon2 - lon1) * p))/2;
+
+  return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
 }
 
 

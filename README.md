@@ -44,11 +44,13 @@ Credits
 - Shernshiou's [Node-uber sdk](https://github.com/shernshiou/node-uber) for a Node.js version of the uber API
 - Salvador Dali's [Geo Distance Algorithm](http://stackoverflow.com/users/1090562/salvador-dali) for calculating the distance between 2 points
 - J.W. Clark's [https server route](https://github.com/JamesWClark/TC/blob/master/server.js) to enable https on local.info
+- A modified version of Alvaro Aneiros' [Geocoding Latitude and Longitude script](https://jsfiddle.net/alvaroAV/qn8bb8q5/) which turns an address into coordinates.
 
 **API Uses**
 - [UBER](https://developer.uber.com/docs/riders/introduction)
 - [Express](https://expressjs.com/en/4x/api.html)
 - [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+- [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
 
 
 **- Built by Max Goeke**

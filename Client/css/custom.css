@@ -20,3 +20,10 @@ button {
 	color: white;
 	border: 1px solid #002d3d;
 }
+a {
+	text-decoration: none;
+	text-decoration-color: black;
+	cursor: auto;
+	color: white;
+	border-bottom: none;
+}
