@@ -243,6 +243,7 @@ function endpointCreate() {
 		if(jqXHR.status === 200) {
 			// then it worked for sure - b/c your server said it was a good request
 			log("we in");
+			
 			log(address.destination.txt);
 		}
 	},
@@ -255,7 +256,7 @@ function endpointCreate() {
 
 /************************************
 *****
-*****	Geocode The end goal from the given
+*****	Geocode the target address
 *****
 ************************************/
 
@@ -303,7 +304,7 @@ function getLatitudeLongitude(callback, address) {
 				log(address);
             }
         });
-    }
+    } 
 }
 
 /************************************

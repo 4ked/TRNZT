@@ -317,7 +317,7 @@ exports.jsonReply = jsonReply;
 
 /************************************
 *****
-*****	Geocoder pulled from main.js
+*****	Posting results back and forth between main and server .js
 *****
 ************************************/
 /*

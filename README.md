@@ -71,11 +71,11 @@ sudo vim /etc/hosts
 Now TRNZT should be able to run on https://local.info:3000, speaking for the server at least.
 
 ### Step four: Getting the necessary API keys
-In order for your own modifications to work you will need to get your own API keys/ accounts, but don't worry the process is straight forward.
+In order for your own modifications to work you will need to get your own API keys/ accounts, but don't worry the process is fairly straight forward.
 
 ##### Thankfully there are only two of these...
 * [Google Maps API](https://developers.google.com/maps/documentation/javascript/), click the link and select 'Get a key'
-* [Uber App API](https://get.uber.com/new-signup/?source=auth&next_url=https%3A%2F%2Fdeveloper.uber.com%2Fdashboard%2F)
+* [Uber App API](https://get.uber.com/new-signup/?source=auth&next_url=https%3A%2F%2Fdeveloper.uber.com%2Fdashboard%2F), create a developer account and then navigate to docs
 > **Note**: Both of these are used throughout the entire TRNZT project, make sure to substitute your own keys appropriately.
 
 You are now officially capable of running TRNZT in the chrome browser on an https server, congratulations!
