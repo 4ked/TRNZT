@@ -81,26 +81,28 @@ form {
 #price-estimate {
 	display: inline-block;
 	width: 100%;
+	margin-top: 60px;
 }
 #price-button {
 	background-color: #d59563;
 	color: #515c6d;
 	border: 3px solid #515c6d;
 	border-radius: 5px;
-	margin-left: 26%;
-	margin-top: 100px;
+	margin-left: 16%;
+	display: inline-block;
 }
 #ride-request {
 	display: inline-block;
 	width: 80%;
+	margin-top: 20px;
 }
 #request-button {
 	background-color: #d59563;
 	color: #515c6d;
 	border: 3px solid #515c6d;
 	border-radius: 5px;
-	margin-top: 100px;
-	margin-left: 29%;
+	margin-left: 27%;
+	display: inline-block;
 }
 #address-form-button {
 	margin-top: 15px;
@@ -118,10 +120,16 @@ form {
 	color: #d59563;
 	display: inline-block;
 	margin-left: 4%;
-	margin-top: 5px;
+	margin-top: 15px;
 }
-
-
+#travelPrep {
+	width: 58%;
+	height: 60px;
+	color: #d59563;
+	display: inline-block;
+	margin-left: 4%;
+	margin-top: 15px;
+}
 
 /************************************
 *****

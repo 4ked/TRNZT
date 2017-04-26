@@ -99,6 +99,9 @@ function initMap() {
 			pos.lat = position.coords.latitude;
 			pos.lng = position.coords.longitude;
 			
+			document.getElementById('startLat').value = pos.lat;
+			document.getElementById('startLng').value = pos.lng;
+			
 			infoWindow.setPosition(pos);
 			infoWindow.setContent('Location found.');
 			infoWindow.open(map);
@@ -323,7 +326,6 @@ function getLatitudeLongitude(callback, address) {
                 callback(results[0]);
 				log(address);
 				var td = distance(pos.lat, pos.lng, goaLat, goaLng, "M");
-				log("Estimated travel distance: " + td);
             }
         });
     } 
@@ -352,7 +354,8 @@ function distance(lat1, lng1, goaLat, goaLng, unit) {
 	log("end lat: ", goaLat);
 	log("start long: ", lng1);
 	log("start lat: ", lat1);
-	log("Travel distance: " + dist + " miles");
+	log("Estimated travel distance: " + dist + " miles");
+	document.getElementById('travelDist').value = dist;
 	return dist
 }
 
