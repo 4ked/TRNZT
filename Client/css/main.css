@@ -60,7 +60,7 @@ body {
 *****
 ************************************/
 .footer {
-	height: 400px;
+	height: 300px;
 	background-color: #002d3d;
 	border: 10px solid black;
 	margin-bottom: 10px;
@@ -70,25 +70,27 @@ body {
 	height: 245px;
 	color: #d59563;
 	display: inline-block;
-	margin-left: 4%;
+	margin-left: 10%;
 	margin-top: 15px;
+	float: right;
 }
 form {
 	margin: none;
 	padding: 5px;
-	border: 1px solid #d59563
+	border: 1px solid #d59563;
+	padding-bottom: 10px;
 }
 #price-estimate {
 	display: inline-block;
 	width: 100%;
-	margin-top: 60px;
+	margin-top: 30px;
 }
 #price-button {
 	background-color: #d59563;
 	color: #515c6d;
 	border: 3px solid #515c6d;
 	border-radius: 5px;
-	margin-left: 16%;
+	margin-left: 6%;
 	display: inline-block;
 }
 #ride-request {
@@ -101,7 +103,7 @@ form {
 	color: #515c6d;
 	border: 3px solid #515c6d;
 	border-radius: 5px;
-	margin-left: 27%;
+	margin-left: 15%;
 	display: inline-block;
 }
 #address-form-button {
@@ -116,18 +118,17 @@ form {
 ************************************/
 #endResults {
 	width: 58%;
-	height: 105px;
+	height: 200px;
 	color: #d59563;
 	display: inline-block;
-	margin-left: 4%;
 	margin-top: 15px;
+	margin-left: 20%;
 }
 #travelPrep {
 	width: 58%;
 	height: 60px;
 	color: #d59563;
 	display: inline-block;
-	margin-left: 4%;
 	margin-top: 15px;
 }
 
