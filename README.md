@@ -28,7 +28,7 @@ Installed Packages
 
 Usage
 ------------
-TRNZT's server side is based on an https route, meaning in order for this to work right out of the box you will need to modify this to your own needs. 
+TRNZT was written on https, which uses SSL certs specific to each project. So in order for you to get TRNZT working, you will need to get your own.
 
 The first step is requesting a self signed certificate. Inside the Server file run:
 ```sh
@@ -52,7 +52,12 @@ sudo vim /etc/hosts
 ```
 > **Note**: You must be in your root directory
 
-Now TRNZT should be able to run on https://local.info:3000
+Now TRNZT should be able to run on https://local.info:3000, but we aren't done yet. The final steps are requesting your own API keys.
+
+##### Thankfully there are only two of these...
+* [Google Maps API](https://developers.google.com/maps/documentation/javascript/), click the link and select 'Get a key'
+* [Uber App API](https://get.uber.com/new-signup/?source=auth&next_url=https%3A%2F%2Fdeveloper.uber.com%2Fdashboard%2F)
+> **Note**: Both of these are used throughout the entire TRNZT project, make sure to substitute your own keys appropriately.
 
 Credits
 ------------
