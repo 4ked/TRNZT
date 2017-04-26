@@ -12,10 +12,10 @@ This project is to repurpose and rebuild the uber service to expand and renew it
 
 - [Installed Packages](#installed-packages)
 - [Usage](#usage)
-  	- [Requesting a Self Signed Certificate](#Step one: Requesting a Self Signed Certificate)
-  	- [Bypassing the Chrome QUIC Protocol](#Step two: Bypassing the Chrome QUIC Protocol)
-  	- [Deleting your target IP from the host file](#Step three: Deleting your target IP from the host file)
-  	- [Getting the necessary API keys](#Step four: Getting the necessary API keys)
+  	- [Requesting a Self Signed Certificate](#Step-one:-Requesting-a-Self-Signed-Certificate)
+  	- [Bypassing the Chrome QUIC Protocol](#Step-two:-Bypassing-the-Chrome-QUIC-Protocol)
+  	- [Deleting your target IP from the host file](#Step-three:-Deleting-your-target-IP-from-the-host-file)
+  	- [Getting the necessary API keys](#Step-four:-Getting-the-necessary-API-keys)
 - [Credits](#credits)
 - [License](#license)
 
