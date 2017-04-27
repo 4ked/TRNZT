@@ -286,11 +286,6 @@ $(document).ready(function() {
 		getLatitudeLongitude(showResult, address)
 	});
 	
-	// get the current position of a user (for the distance algorithm)
-	navigator.geolocation.getCurrentPosition(function(location) {
-	  var lat1 = location.coords.latitude;
-	  var lng1 = location.coords.longitude;
-	});
 });
 
 function showResult(result) {
@@ -300,7 +295,13 @@ function showResult(result) {
     document.getElementById('endLon').value = result.geometry.location.lng();
 	
 	log("it worked!");
-	log("lat: " + result.geometry.location.lat() + ", " + "lng: " + result.geometry.location.lng());
+	
+	var uri = '/v1.2/requests?start_latitude=' + pos.lat + '&start_longitude=' + pos.lng + '&end_latitude=' + goalat + '&end_longitude=' + goalng;
+	log(uri);
+	/*http.get(uri, function(request, response) {
+		
+	});
+	*/
 }
 
 function getLatitudeLongitude(callback, address) {
@@ -329,12 +330,6 @@ function getLatitudeLongitude(callback, address) {
             }
         });
     } 
-	var uri = '/v1.2/requests?start_latitude=' + pos.lat + "&start_longitude=" + pos.lng + "&end_latitude=" + goalat + "&end_longitude=" + goalng;
-	log(uri);
-	/*http.get(uri, function(request, response) {
-		
-	});
-	*/
 }
 
 /************************************
