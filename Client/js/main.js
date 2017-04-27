@@ -273,8 +273,8 @@ function endpointCreate() {
 *****
 ************************************/
 // establish global variables
-var goaLat;
-var goaLng;
+var goalat;
+var goalng;
 
 $(document).ready(function() {
 	// $('#address-form-button').click(endpointCreate);
@@ -294,8 +294,8 @@ $(document).ready(function() {
 });
 
 function showResult(result) {
-    goaLat = result.geometry.location.lat();
-	goaLng = result.geometry.location.lng()
+    goalat = result.geometry.location.lat();
+	goalng = result.geometry.location.lng()
 	document.getElementById('endLat').value = result.geometry.location.lat();
     document.getElementById('endLon').value = result.geometry.location.lng();
 	
@@ -325,10 +325,16 @@ function getLatitudeLongitude(callback, address) {
             if (status == google.maps.GeocoderStatus.OK) {
                 callback(results[0]);
 				log(address);
-				var td = distance(pos.lat, pos.lng, goaLat, goaLng, "M");
+				var td = distance(pos.lat, pos.lng, goalat, goalng, "M");
             }
         });
     } 
+	var uri = '/v1.2/requests?start_latitude=' + pos.lat + "&start_longitude=" + pos.lng + "&end_latitude=" + goalat + "&end_longitude=" + goalng;
+	log(uri);
+	/*http.get(uri, function(request, response) {
+		
+	});
+	*/
 }
 
 /************************************
@@ -339,10 +345,10 @@ function getLatitudeLongitude(callback, address) {
 
 // GeoDataSource.com (C) All Rights Reserved 2015
 
-function distance(lat1, lng1, goaLat, goaLng, unit) {
+function distance(lat1, lng1, goalat, goalng, unit) {
 	var radlat1 = Math.PI * lat1/180
-	var radlat2 = Math.PI * goaLat/180
-	var theta = lng1-goaLng
+	var radlat2 = Math.PI * goalat/180
+	var theta = lng1-goalng
 	var radtheta = Math.PI * theta/180
 	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
 	dist = Math.acos(dist)
@@ -350,13 +356,21 @@ function distance(lat1, lng1, goaLat, goaLng, unit) {
 	dist = dist * 60 * 1.1515
 	if (unit=="K") { dist = dist * 1.609344 }
 	if (unit=="N") { dist = dist * 0.8684 }
-	log("end long: ", goaLng);
-	log("end lat: ", goaLat);
-	log("start long: ", lng1);
-	log("start lat: ", lat1);
+	log("start lat: " + lat1 + " start lng: " + lng1);
+	log("end lat: " + goalat + " end lng: " + goalng);
 	log("Estimated travel distance: " + dist + " miles");
 	document.getElementById('travelDist').value = dist;
 	return dist
 }
+
+/************************************
+*****	
+*****	Get requests for server
+*****
+************************************/
+
+
+
+
 
 

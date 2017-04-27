@@ -249,14 +249,15 @@ app.get('/v1.2/requests', function(request, response) {
   		"product_id": "product_id",
   		"start_latitude": query.lat,
   		"start_longitude": query.lng,
-  		"end_latitude": end_latitude,
-  		"end_longitude": end_longitude
+  		"end_latitude": query.goalat,
+  		"end_longitude": query.goalng
 	})
 	.then(function(res) { 
 		log(res); 
 		uber.requests.getCurrentAsync()
 		.then(function(res) { 
 			log(res); 
+			res.send('got it');
 		})
 		.error(function(err) { 
 			console.error(err); 
@@ -321,15 +322,16 @@ exports.jsonReply = jsonReply;
 *****	Posting results back and forth between main and server .js
 *****
 ************************************/
-/*
+
 app.post('/api/endpoint', function(req,res) {
-	var address = req.body;
-	var userAddress = address.destination;
+	var pos = req.body;
 	
-	log(userAddress);
-	res.status(200).send(address);
+	
+	
+	
+	// res.status(200).send(pos);
 });
-*/
+
 
 
 
