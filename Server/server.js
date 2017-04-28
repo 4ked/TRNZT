@@ -139,6 +139,8 @@ jsonReply = function(path) {
 *****
 ************************************/
 
+var rPA = 'a1111c8c-c720-46c3-8534-2fcdd730040d';
+
 //	Authenticate uber login with scopes
 app.get('/v1.2/login', function(request, response) {
   	var url = uber.getAuthorizeUrl(['profile', 'request', 'places', 'all_trips', 'ride_widgets']);
@@ -241,16 +243,16 @@ app.get('/v1.2/me', function(request, response) {
 });
 
 //	Request a ride on behalf of an uber user
-app.get('/v1.2/requests', function(request, response) {
+app.post('/v1.2/requests', function(request, response) {
 	// extract the query from the request URL
-  	var query = url.parse(request.url, true).query;
+  	//var query = url.parse(request.url, true).query;
 	
 	uber.requests.createAsync({
-  		"product_id": "product_id",
-  		"start_latitude": query.lat,
-  		"start_longitude": query.lng,
-  		"end_latitude": query.goalat,
-  		"end_longitude": query.goalng
+		"fare_id": j,
+  		"start_latitude": request.query.lat,
+  		"start_longitude": request.query.lng,
+  		"end_latitude": request.query.goalat,
+  		"end_longitude": request.query.goalng
 	})
 	.then(function(res) { 
 		log(res); 
@@ -302,7 +304,7 @@ app.post('https://local.info/v1.2/:requests', function(data) {
 
 /************************************
 *****
-*****	Exports
+*****	Exports for uber
 *****
 ************************************/
 
@@ -316,22 +318,6 @@ exports.uber_sandbox = uber_sandbox;
 exports.key = key;
 exports.jsonReplyPath = jsonReplyPath;
 exports.jsonReply = jsonReply;
-
-/************************************
-*****
-*****	Posting results back and forth between main and server .js
-*****
-************************************/
-
-app.post('/api/endpoint', function(req,res) {
-	var pos = req.body;
-	
-	
-	
-	
-	// res.status(200).send(pos);
-});
-
 
 
 

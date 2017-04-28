@@ -199,39 +199,6 @@ http.get = function(url, success, error) {
     });
 };
 
-http.put = function(url, json, success, error) {
-    $.ajax({
-        url: route(url),
-        method: 'PUT',
-        data: json,
-        headers: {
-            'Authorization': authResponse.id_token
-        },
-        success: function(data, statusText, jqXHR) {
-            if (success) success(data, statusText, jqXHR);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            if (error) error(jqXHR, textStatus, errorThrown);
-        }
-    });
-};
-
-http.delete = function(url, success, error) {
-    $.ajax({
-        url: route(url),
-        method: 'DELETE',
-        headers: {
-            'Authorization': authResponse.id_token
-        },
-        success: function(data, statusText, jqXHR) {
-            if (success) success(data, statusText, jqXHR);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            if (error) error(jqXHR, textStatus, errorThrown);
-        }
-    });
-};
-
 /************************************
 *****
 *****	Data Manipulation Sect
@@ -291,6 +258,7 @@ $(document).ready(function() {
 function showResult(result) {
     goalat = result.geometry.location.lat();
 	goalng = result.geometry.location.lng()
+	
 	document.getElementById('endLat').value = result.geometry.location.lat();
     document.getElementById('endLon').value = result.geometry.location.lng();
 	
