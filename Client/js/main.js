@@ -298,7 +298,8 @@ function showResult(result) {
 	
 	var uri = '/v1.2/requests?start_latitude=' + pos.lat + '&start_longitude=' + pos.lng + '&end_latitude=' + goalat + '&end_longitude=' + goalng;
 	log(uri);
-	/*http.get(uri, function(request, response) {
+	/*
+	http.get(uri, function(request, response) {
 		
 	});
 	*/
@@ -357,15 +358,5 @@ function distance(lat1, lng1, goalat, goalng, unit) {
 	document.getElementById('travelDist').value = dist;
 	return dist
 }
-
-/************************************
-*****	
-*****	Get requests for server
-*****
-************************************/
-
-
-
-
 
 

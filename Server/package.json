@@ -2,6 +2,7 @@
   "name": "TRNZT",
   "version": "0.0.1",
   "description": "A new wrapper for uber",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/4ked/TRNZT"

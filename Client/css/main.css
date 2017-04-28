@@ -26,7 +26,7 @@ body {
 	padding: none;
 }
 #header-tag {
-	color: white;
+	color: #d59563;
 	text-decoration: none;
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 	text-align: center;
@@ -39,6 +39,7 @@ body {
 ************************************/
 #map {
     height: 500px;
+	border: 1px solid #d59563;
 }
 #connect {
 	background: #515c6d;
