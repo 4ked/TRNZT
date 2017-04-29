@@ -174,24 +174,36 @@ app.get('/v1.2/callback', function(request, response) {
    	});
 });
 
-//	Display uber products available at current given location
-app.get('/v1/products', function(request, response) {
-  	// extract the query from the request URL
-  	var query = request.query;
+//	Request a ride on behalf of an uber user
+app.post('/v1.2/requests', function(request, response) {
+	var mytoken = req.get('Authorization');
 	
-  	// if no query params sent, respond with Bad Request
-  	if (!query || !query.lat || !query.lng) {
-  	  	response.sendStatus(400);
-  	} else {
-  	  	uber.products.getAllForLocationAsync(query.lat, query.lng)
-  	  	.then(function(res) {
-  	  	    response.json(res);
-  	  	})
-  	  	.error(function(err) {
-  	  	  console.error(err);
-  	  	  response.sendStatus(500);
-  	  	});
-  	}
+	var options = {
+		url: 'https://sandbox-api.uber.com/v1.2/requests',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': 'mytoken'
+		}
+	}
+	//var query = url.parse(request.url, true).query;
+	request(options, function(err, res, body) {
+		uber.requests.createAsync({
+  			"product_id": '2f9a5a3c-a3c1-459d-83d4-5b5c18f1a191',
+			"start_latitude": request.query.lat,
+  			"start_longitude": request.query.lng,
+  			"end_latitude": request.query.goalat,
+  			"end_longitude": request.query.goalng
+		})
+		.then(function(res) { 
+			log(res); 
+		
+			response.redirect('https://sandbox-api.uber.com/v1.2/requests');
+		})
+		.error(function(err) { 
+			console.error(err); 
+		});
+	});
+	
 });
 
 // 	Get an upfront fare before requesting a ride
@@ -240,34 +252,6 @@ app.get('/v1.2/me', function(request, response) {
 	.error(function(err) { 
 		console.error(err); 
 	});
-});
-
-//	Request a ride on behalf of an uber user
-app.post('/v1.2/requests', function(request, response) {
-	// extract the query from the request URL
-  	//var query = url.parse(request.url, true).query;
-	
-	uber.requests.createAsync({
-  		"start_latitude": request.query.lat,
-  		"start_longitude": request.query.lng,
-  		"end_latitude": request.query.goalat,
-  		"end_longitude": request.query.goalng
-	})
-	.then(function(res) { 
-		log(res); 
-		uber.requests.getCurrentAsync()
-		.then(function(res) { 
-			log(res); 
-			res.send('got it');
-		})
-		.error(function(err) { 
-			console.error(err); 
-		});
-	})
-	.error(function(err) { 
-		console.error(err); 
-	});
-	
 });
 
 //	Retrieve home and work address from user profile

@@ -156,6 +156,25 @@ var log = function(msg, obj) {
 
 /************************************
 *****
+*****	Jquery to get queried string from url
+*****
+************************************/
+// Read a page's GET URL variables and return them as an associative array.
+function urlStrngz()
+{
+    var strngz = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        strngz.push(hash[0]);
+        strngz[hash[0]] = hash[1];
+    }
+    return strngz;
+} 
+
+/************************************
+*****
 *****	OpGenerics stuff
 *****
 ************************************/
@@ -171,9 +190,9 @@ http.post = function(url, json, success, error) {
 		url: route(url),
 		method: 'POST',
 		data: json,
-		//headers: {
-		//	'Authorization': authResponse.id_token
-		//},
+		headers: {
+			'Authorization': access_token
+		},
 		success: function(data, statusText, jqXHR) {
 			if (success) success(data, statusText, jqXHR);
 		},
@@ -188,7 +207,7 @@ http.get = function(url, success, error) {
         url: route(url),
         method: 'GET',
         headers: {
-            'Authorization': authResponse.id_token
+            'Authorization': access_token
         },
         success: function(data, statusText, jqXHR) {
             if (success) success(data, statusText, jqXHR);
@@ -201,38 +220,16 @@ http.get = function(url, success, error) {
 
 /************************************
 *****
-*****	Data Manipulation Sect
+*****	Passing the Tokens
 *****
 ************************************/
 
-/*
-function endpointCreate() {
-	var address = {};
-	address.location = {}; // where the user currently is
-	address.destination = {}; // entered end destination
+var access_token = urlStrngz()["access_token"];
 
-	address.destination.street 		= $("#address").val();
-	address.destination.city 		= $("#city").val();
-	address.destination.state 		= $("#state").val();
-	address.destination.zip 		= $("#zip").val();
-	address.destination.txt 		= address.destination.street + ", " + address.destination.city + ", " + address.destination.state + ", " + address.destination.zip;
-
-	http.post('/api/endpoint', address,
-	function(data, statusText, jqXHR) { // success
-		if(jqXHR.status === 200) {
-			// then it worked for sure - b/c your server said it was a good request
-			log("we in");
-			
-			log(address.destination.txt);
-		}
-	},
-    function() { // error
-		//todo: error
-		log("it didn't work:(")
-	});
-};
-*/
-
+http.post('/v1.2/requests', {}, function(data, statusText, jqXHR) {
+	
+	log("transfer of token worked");
+});
 
 /************************************
 *****
