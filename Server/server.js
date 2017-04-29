@@ -112,7 +112,7 @@ var key = {
   	"client_id": "LJGpana69PX47lPLFP5PpIdySYT5CT-G",
   	"client_secret": "mgtzL4Ok7Ibyfb4ecvO-PpQhQJbgTLF3SC_vS8RN",
   	"server_token": "Drp9ApEpmWdRKUIsf3CS3RGCmvo-tTDRGzYV6BDv",
-  	"redirect_uri": "https://local.info:3000",
+  	"redirect_uri": "https://local.info:3000/v1.2/callback",
   	"name": "TRNZT",
   	"language": "en_US", // optional, defaults to en_US
 };
@@ -139,11 +139,9 @@ jsonReply = function(path) {
 *****
 ************************************/
 
-var rPA = 'a1111c8c-c720-46c3-8534-2fcdd730040d';
-
 //	Authenticate uber login with scopes
 app.get('/v1.2/login', function(request, response) {
-  	var url = uber.getAuthorizeUrl(['profile', 'request', 'places', 'all_trips', 'ride_widgets']);
+  	var url = uber.getAuthorizeUrl(['profile', 'places', 'ride_widgets', 'request']);
   	response.redirect(url);
 	log(url);
 	// User can manually go to authorization @ https://login.uber.com/oauth/v2/authorize?client_id=LJGpana69PX47lPLFP5PpIdySYT5CT-G&response_type=code
@@ -156,18 +154,20 @@ app.get('/v1.2/callback', function(request, response) {
 	})
    	.spread(function(access_token, refresh_token, authorizedScopes, tokenExpiration) {
    	  	// store the user id and associated access_token, refresh_token, scopes and token expiration date
-   	  	log('New access_token retrieved: ' + access_token);
+   	  	request.access = access_token;
+		log('New access_token retrieved: ' + access_token);
    	  	log('... token allows access to scopes: ' + authorizedScopes);
    	  	log('... token is valid until: ' + tokenExpiration);
    	  	log('... after token expiration, re-authorize using refresh_token: ' + refresh_token);
 		
-		var query = url.parse(request.url, true).query;
-		return uber.products.getAllForLocationAsync(query.lat, query.lng);
+		var query = request.query;
+		return uber.products.getAllForLocationAsync(39.010969, -94.61509899999999);
    	})
 	.then(function(res) {
 		log(res);
+		
 		// redirect the user back to your actual app
-   	  	response.redirect('../Client/index.html');
+		response.redirect('../?access_token=' + request.access);
 	})
    	.error(function(err) {
    	  	console.error(err);
@@ -177,7 +177,7 @@ app.get('/v1.2/callback', function(request, response) {
 //	Display uber products available at current given location
 app.get('/v1/products', function(request, response) {
   	// extract the query from the request URL
-  	var query = url.parse(request.url, true).query;
+  	var query = request.query;
 	
   	// if no query params sent, respond with Bad Request
   	if (!query || !query.lat || !query.lng) {
@@ -248,7 +248,6 @@ app.post('/v1.2/requests', function(request, response) {
   	//var query = url.parse(request.url, true).query;
 	
 	uber.requests.createAsync({
-		"fare_id": j,
   		"start_latitude": request.query.lat,
   		"start_longitude": request.query.lng,
   		"end_latitude": request.query.goalat,

@@ -250,7 +250,7 @@ $(document).ready(function() {
 
 	button.addEventListener("click", function () {
 		var address = document.getElementById('address').value;
-		getLatitudeLongitude(showResult, address)
+		getLocation(showResult, address)
 	});
 	
 });
@@ -273,7 +273,7 @@ function showResult(result) {
 	*/
 }
 
-function getLatitudeLongitude(callback, address) {
+function getLocation(callback, address) {
     
 	var address = {};
 	address.location = {}; // where the user currently is
