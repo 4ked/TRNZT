@@ -173,6 +173,8 @@ function urlStrngz()
     return strngz;
 } 
 
+var access_token = urlStrngz()["access_token"];
+
 /************************************
 *****
 *****	OpGenerics stuff
@@ -224,12 +226,7 @@ http.get = function(url, success, error) {
 *****
 ************************************/
 
-var access_token = urlStrngz()["access_token"];
 
-http.post('/v1.2/requests', {}, function(data, statusText, jqXHR) {
-	
-	log("transfer of token worked");
-});
 
 /************************************
 *****
@@ -241,15 +238,23 @@ var goalat;
 var goalng;
 
 $(document).ready(function() {
-	// $('#address-form-button').click(endpointCreate);
 	
 	var button = document.getElementById('address-form-button');
-
 	button.addEventListener("click", function () {
 		var address = document.getElementById('address').value;
 		getLocation(showResult, address)
 	});
 	
+	
+	var button2 = document.getElementById('connect-button');
+	button2.addEventListener("click", function() {
+		log(access_token);
+		
+		http.post('/v1.2/requests', {}, function(data, statusText, jqXHR) {
+
+			log("transfer of token worked");
+		});
+	});
 });
 
 function showResult(result) {

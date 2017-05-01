@@ -175,24 +175,24 @@ app.get('/v1.2/callback', function(request, response) {
 });
 
 //	Request a ride on behalf of an uber user
-app.post('/v1.2/requests', function(request, response) {
+app.post('/v1.2/requests', function(req, res) {
 	var mytoken = req.get('Authorization');
 	
 	var options = {
 		url: 'https://sandbox-api.uber.com/v1.2/requests',
 		headers: {
 			'Content-Type': 'application/json',
-			'Authorization': 'mytoken'
+			'Authorization': 'Bearer ' + mytoken
 		}
 	}
 	//var query = url.parse(request.url, true).query;
 	request(options, function(err, res, body) {
 		uber.requests.createAsync({
   			"product_id": '2f9a5a3c-a3c1-459d-83d4-5b5c18f1a191',
-			"start_latitude": request.query.lat,
-  			"start_longitude": request.query.lng,
-  			"end_latitude": request.query.goalat,
-  			"end_longitude": request.query.goalng
+			"start_latitude": '38.9597897',
+  			"start_longitude": '-94.60699369999999',
+  			"end_latitude": '39.010969',
+  			"end_longitude": '-94.61509899999999'
 		})
 		.then(function(res) { 
 			log(res); 
