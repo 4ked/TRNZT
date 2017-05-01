@@ -156,24 +156,20 @@ var log = function(msg, obj) {
 
 /************************************
 *****
-*****	Jquery to get queried string from url
+*****	JS to get queried string from url
 *****
 ************************************/
-// Read a page's GET URL variables and return them as an associative array.
-function urlStrngz()
-{
-    var strngz = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        strngz.push(hash[0]);
-        strngz[hash[0]] = hash[1];
-    }
-    return strngz;
-} 
 
-var access_token = urlStrngz()["access_token"];
+// Read a page's GET URL variables and return them as an associative array.
+function urlStrngz(name, url) {
+    if (!url) url = window.location.search;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
 /************************************
 *****
@@ -248,6 +244,8 @@ $(document).ready(function() {
 	
 	var button2 = document.getElementById('connect-button');
 	button2.addEventListener("click", function() {
+		var access_token = urlStrngz('access_token');
+		
 		log(access_token);
 		
 		http.post('/v1.2/requests', {}, function(data, statusText, jqXHR) {
@@ -255,6 +253,7 @@ $(document).ready(function() {
 			log("transfer of token worked");
 		});
 	});
+	
 });
 
 function showResult(result) {
