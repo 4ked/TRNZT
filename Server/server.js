@@ -175,20 +175,20 @@ app.get('/v1.2/callback', function(request, response) {
 });
 
 //	Request a ride on behalf of an uber user
-app.post('/v1.2/requests', function(req, res) {
-	var mytoken = req.get('Authorization');
+app.get('/v1.2/requests', function(req, res) {
 	
 	var options = {
 		url: 'https://sandbox-api.uber.com/v1.2/requests',
 		headers: {
-			'Content-Type': 'application/json',
-			'Authorization': 'Bearer ' + mytoken
+			"Content-Type": "application/json",
+			"Accept-Language": "en_US",
+			"Authorization": "Token Drp9ApEpmWdRKUIsf3CS3RGCmvo-tTDRGzYV6BDv"
 		}
-	}
-	//var query = url.parse(request.url, true).query;
-	request(options, function(err, res, body) {
+	};
+	
+	function createtherequest(err, res, body) {
 		uber.requests.createAsync({
-  			"product_id": '2f9a5a3c-a3c1-459d-83d4-5b5c18f1a191',
+  			"product_id": '33de8094-3dc4-4ca9-8f67-243275f57623',
 			"start_latitude": '38.9597897',
   			"start_longitude": '-94.60699369999999',
   			"end_latitude": '39.010969',
@@ -196,32 +196,47 @@ app.post('/v1.2/requests', function(req, res) {
 		})
 		.then(function(res) { 
 			log(res); 
-		
-			response.redirect('https://sandbox-api.uber.com/v1.2/requests');
+			res.redirect('https://sandbox-api.uber.com/v1.2/requests');
 		})
-		.error(function(err) { 
+		.error(function(err) {
 			console.error(err); 
 		});
-	});
+	};
+	
+	//var query = url.parse(request.url, true).query;
+	request(options, createtherequest);
 	
 });
 
 // 	Get an upfront fare before requesting a ride
 app.get('/v1.2/estimates/price', function(request, response) {
-  	// extract the query from the request URL
-  	var query = url.parse(request.url, true).query;
+	//extract the query from the request URL
+	var query = request.query;
 	
-  	// if no query params sent, respond with Bad Request
-  	if (!query || !query.lat || !query.lng) {
-  	  response.sendStatus(400);
-  	} else { 
-		  uber.estimates.getPriceForRouteAsync(query.lat, query.lng, end_latitude, end_longitude)
-		  .then(function(res) {
-			  response.json(res);
-		  })
-		  .error(function(err) {
-			  console.error(err);
-		  });
+	res.set({
+		'Content-Type': 'application/json',
+		'Authorization': 'Token ' + uber.access_token,
+		'Accept-Language': 'en_US'
+	});
+	
+	//if no query params sent, respond with Bad Request
+	if (!query || !query.lat || !query.lng) {
+		response.sendStatus(400);
+	} else { 
+		uber.estimates.getPriceForRouteAsync({
+			//"product_id": "33de8094-3dc4-4ca9-8f67-243275f57623", 
+			"start_latitude": "38.9597897", 
+			"start_longitude": "-94.60699369999999",
+			"end_latitude": "39.010969", 
+			"end_longitude": "-94.61509899999999"
+		})
+		.then(function(res) {
+			log(res);
+		})
+		.error(function(err) {
+			console.error(err);
+			response.sendStatus(422);
+		});
   	}
 });
 

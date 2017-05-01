@@ -216,13 +216,6 @@ http.get = function(url, success, error) {
     });
 };
 
-/************************************
-*****
-*****	Passing the Tokens
-*****
-************************************/
-
-
 
 /************************************
 *****
@@ -240,8 +233,16 @@ $(document).ready(function() {
 		var address = document.getElementById('address').value;
 		getLocation(showResult, address)
 	});
-	
-	
+	//
+	//
+	//
+	//
+	//
+	//
+	var access_token = urlStrngz('access_token');
+		
+	log(access_token);
+	// THis isn't doin anything.. write if on this route, do this. fingers crossed
 	var button2 = document.getElementById('connect-button');
 	button2.addEventListener("click", function() {
 		var access_token = urlStrngz('access_token');
