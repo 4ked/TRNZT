@@ -116,6 +116,16 @@
 								<input type="button" value="Submit" id="address-form-button">
 							</form>
 						</div>
+						<div id="price-estimate">
+							<a href="https://local.info:3000/v1.2/estimates/price">
+								<button id="price-button">Get a price estimate</button>
+							</a>
+						</div>
+						<div id="ride-request">
+							<a href="https://local.info:3000/v1.2/requests">
+								<button id="request-button">Request a Ride</button>
+							</a>
+						</div>
 					</div>
 					<div class="col-sm-4">
 						<div id="endResults">
@@ -130,23 +140,31 @@
 								<input type="text" id="endLon" readonly>
 							</form>
 						</div>
-					</div>
-					<div class="col-sm-4">
 						<div id="travelPrep">
 							<form>
 								Travel Distance (miles):
 								<input type="text" id="travelDist" readonly>
 							</form>
 						</div>
-						<div id="price-estimate">
-						<a href="https://local.info:3000/v1.2/estimates/price">
-							<button id="price-button">Get a price estimate</button>
-						</a>
-						</div>
-						<div id="ride-request">
-							<a href="https://local.info:3000/v1.2/requests">
-								<button id="request-button">Request a Ride</button>
-							</a>
+					</div>
+					<div class="col-sm-4">
+						<div id="productDetails">
+							<form id="productForm">
+								Available Product ID #1
+								<input type="text" id="productID1" readonly>
+								Available Product ID #2
+								<input type="text" id="productID2" readonly>
+								Available Product ID #3
+								<input type="text" id="productID3" readonly>
+							</form>
+							<form id="productForm">
+								Product Description #1:
+								<input type="text" id="productID1d" readonly>
+								Product Description #2:
+								<input type="text" id="productID2d" readonly>
+								Product Description #3:
+								<input type="text" id="productID3d" readonly>
+							</form>
 						</div>
 					</div>
 				</div>

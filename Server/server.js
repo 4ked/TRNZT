@@ -164,15 +164,38 @@ app.get('/v1.2/callback', function(request, response) {
 		return uber.products.getAllForLocationAsync(39.010969, -94.61509899999999);
    	})
 	.then(function(res) {
-		log(res);
+		var namezString = getProdNamez(res);
+		var descriptionzString = getProdDescs(res);
+
+		log(res.products);
+		
 		
 		// redirect the user back to your actual app
-		response.redirect('../?access_token=' + request.access);
+		response.redirect('../?access_token=' + request.access + '&product_names=' + namezString + '&product_descriptions=' + descriptionzString);
 	})
    	.error(function(err) {
    	  	console.error(err);
    	});
 });
+
+function getProdNamez(res) {
+	var arr = res.products;
+		
+	var namez = '';
+	for(var i = 0; i < arr.length; i++) {
+		namez += arr[i].display_name + ',';
+	}
+	return namez;
+}
+function getProdDescs(res) {
+	var arr = res.products;
+	
+	var descriptionz = '';
+	for(var i = 0; i < arr.length; i++) {
+		descriptionz += arr[i].description + ',';
+	}
+	return descriptionz;
+}
 
 //	Request a ride on behalf of an uber user
 app.get('/v1.2/requests', function(req, res) {
@@ -182,7 +205,7 @@ app.get('/v1.2/requests', function(req, res) {
 		headers: {
 			"Content-Type": "application/json",
 			"Accept-Language": "en_US",
-			"Authorization": "Token Drp9ApEpmWdRKUIsf3CS3RGCmvo-tTDRGzYV6BDv"
+			"Authorization": "Bearer KA.eyJ2ZXJzaW9uIjoyLCJpZCI6IlpXREJ3OVBWU2dpUTZyTThvU1dya3c9PSIsImV4cGlyZXNfYXQiOjE0OTYzMzQ0NzUsInBpcGVsaW5lX2tleV9pZCI6Ik1RPT0iLCJwaXBlbGluZV9pZCI6MX0.a9PV89iqwudoAdZRdFsc5oVKVBujLf9S1-xiI5sRUUI"
 		}
 	};
 	
@@ -212,30 +235,23 @@ app.get('/v1.2/requests', function(req, res) {
 app.get('/v1.2/estimates/price', function(request, response) {
 	//extract the query from the request URL
 	var query = request.query;
-	
+	/*
 	res.set({
 		'Content-Type': 'application/json',
 		'Authorization': 'Token ' + uber.access_token,
 		'Accept-Language': 'en_US'
 	});
-	
+	*/
 	//if no query params sent, respond with Bad Request
 	if (!query || !query.lat || !query.lng) {
 		response.sendStatus(400);
 	} else { 
-		uber.estimates.getPriceForRouteAsync({
-			//"product_id": "33de8094-3dc4-4ca9-8f67-243275f57623", 
-			"start_latitude": "38.9597897", 
-			"start_longitude": "-94.60699369999999",
-			"end_latitude": "39.010969", 
-			"end_longitude": "-94.61509899999999"
+		uber.estimates.getPriceForRouteAsync(38.9597897, -94.606994, 39.010969, -94.615098)
+		.then(function(res) { 
+			log(res); 
 		})
-		.then(function(res) {
-			log(res);
-		})
-		.error(function(err) {
-			console.error(err);
-			response.sendStatus(422);
+		.error(function(err) { 
+			console.error(err); 
 		});
   	}
 });

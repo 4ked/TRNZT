@@ -1,6 +1,6 @@
 /************************************
 *****
-*****		Map Work
+*****		Map Design
 *****
 ************************************/
 var pos = {};
@@ -233,29 +233,29 @@ $(document).ready(function() {
 		var address = document.getElementById('address').value;
 		getLocation(showResult, address)
 	});
-	//
-	//
-	//
-	//
-	//
-	//
-	var access_token = urlStrngz('access_token');
-		
-	log(access_token);
-	// THis isn't doin anything.. write if on this route, do this. fingers crossed
-	var button2 = document.getElementById('connect-button');
-	button2.addEventListener("click", function() {
-		var access_token = urlStrngz('access_token');
-		
-		log(access_token);
-		
-		http.post('/v1.2/requests', {}, function(data, statusText, jqXHR) {
-
-			log("transfer of token worked");
-		});
-	});
 	
+	var access_token = urlStrngz('access_token');
+	
+	productDisplays();
 });
+
+function productDisplays() {
+	// Get the seperate strings from the queried url
+	var product_names = urlStrngz('product_names');
+	var product_descriptions = urlStrngz('product_descriptions');
+	
+	// Seperate items of the strings with jquery
+	var namesarr = product_names.split(',');
+	var descsarr = product_descriptions.split(',');
+	
+	// pushing new data into the alloted index positions
+	document.getElementById('productID1').value = namesarr[0];
+	document.getElementById('productID2').value = namesarr[1];
+	document.getElementById('productID3').value = namesarr[2];
+	document.getElementById('productID1d').value = descsarr[0];
+	document.getElementById('productID2d').value = descsarr[1];
+	document.getElementById('productID3d').value = descsarr[2];
+}
 
 function showResult(result) {
     goalat = result.geometry.location.lat();

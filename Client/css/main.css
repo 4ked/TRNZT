@@ -61,7 +61,7 @@ body {
 *****
 ************************************/
 .footer {
-	height: 300px;
+	height: 400px;
 	background-color: #002d3d;
 	border: 10px solid black;
 	margin-bottom: 10px;
@@ -91,20 +91,20 @@ form {
 	color: #515c6d;
 	border: 3px solid #515c6d;
 	border-radius: 5px;
-	margin-left: 6%;
+	margin-left: 45%;
 	display: inline-block;
 }
 #ride-request {
 	display: inline-block;
-	width: 80%;
-	margin-top: 20px;
+	width: 100%;
 }
 #request-button {
 	background-color: #d59563;
 	color: #515c6d;
 	border: 3px solid #515c6d;
 	border-radius: 5px;
-	margin-left: 15%;
+	margin-top: 10px;
+	margin-left: 50%;
 	display: inline-block;
 }
 #address-form-button {
@@ -131,8 +131,46 @@ form {
 	color: #d59563;
 	display: inline-block;
 	margin-top: 15px;
+	margin-left: 20%;
 }
-
+/************************************
+*****
+*****	Product Info
+*****
+************************************/
+#productDetails {
+	width: 100%;
+	height: 320px;
+	color: #d59563;
+	display: inline-block;
+	margin-top: 15px;
+}
+#productForm {
+	margin: none;
+	padding: 5px;
+	border: 1px solid #d59563;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	width: 56%;
+}
+#productID1 {
+	width: 100%;
+}
+#productID2 {
+	width: 100%;
+}
+#productID3 {
+	width: 100%;
+}
+#productID1d {
+	width: 100%;
+}
+#productID2d {
+	width: 100%;
+}
+#productID3d {
+	width: 100%;
+}
 /************************************
 *****
 *****	Problem solving
