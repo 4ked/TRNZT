@@ -21,21 +21,18 @@ This project is to repurpose and rebuild the uber service to expand and renew it
 
 ## Installed Packages
 
-- Bluebird
-- Body Parser
-- Chai
-- Cookie Parser
-- Express
-- Express-validator
-- Fs-Extra
-- Geocoder
-- MongoDB
-- Nock
-- Node-uber
-- OAuth
-- Qs
-- Request
-- Socket.io
+- [Bluebird](https://www.npmjs.com/package/bluebird)
+- [Body Parser](https://www.npmjs.com/package/body-parser)
+- [Cookie Parser](https://www.npmjs.com/package/cookie-parser)
+- [Express](https://www.npmjs.com/package/express)
+- [Express-validator](https://www.npmjs.com/package/express-validator)
+- [Fs-Extra](https://www.npmjs.com/package/fs-extra)
+- [Geocoder](https://www.npmjs.com/package/geocoder)
+- [Node-uber](https://www.npmjs.com/package/node-uber)
+- [OAuth](https://www.npmjs.com/package/oauth)
+- [Qs](https://www.npmjs.com/package/qs)
+- [Request](https://www.npmjs.com/package/request)
+- [Socket.io](https://www.npmjs.com/package/socket.io)
 
 ## Usage
 
