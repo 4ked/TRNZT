@@ -1,0 +1,5 @@
+-/		Get registered as a developer @ https://www.lyft.com/developers
+
+-		Download the sdk
+
+-		start working logistics of combining with uber
