@@ -5,7 +5,7 @@
 
 TRNZT
 =========
-This project is to repurpose and rebuild the uber service to expand and renew its original structure. TRNZT offers more to the user and is an open source project incoporating many smaller projects into one, allowing various parts to be picked and used elsewhere.
+TRNZT is a web and mobile application purposed to put all modes of transportation under the spotlight, for everyone, all the time. By using existing accounts with services such as über, lyft, and more...TRNZT shows you everything, plain and simple. You can easily judge your next ride the way you want: price, time, or perhaps luxury. With future expansion for cabs, buses, water transport, and more; TRNZT will truly allow you to see everything.
 
 
 ## Contents
