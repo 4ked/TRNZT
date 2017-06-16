@@ -198,3 +198,28 @@ a, a:hover, a:focus {
 	text-align: center;
 	font-size: 12px;
 }
+/************************************
+*****
+*****	Privacy Page
+*****
+************************************/
+#seriousness {
+	margin: 25px;
+	margin-top: 325px;
+	background-color: black;
+	border: 3px solid #d59563;
+	color: white;
+	text-align: center;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 32px;
+}
+.backtoindex {
+	margin-top: 275px;
+	margin-right: 25px;
+	border: 1px solid #d59563;
+	padding: 5px;
+	color: #515c6d;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 12px;
+	float: right;
+}
