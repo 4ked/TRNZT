@@ -5,7 +5,7 @@
 
 TRNZT
 =========
-TRNZT is a web and mobile application purposed to put all modes of transportation under the spotlight, for everyone, all the time. By using existing accounts with services such as über, lyft, and more...TRNZT shows you everything, plain and simple. You can easily judge your next ride the way you want: price, time, or perhaps luxury. With future expansion for cabs, buses, water transport, and more; TRNZT will truly allow you to see everything.
+TRNZT is a web-based application purposed to assist users in selecting their next mode of transportation. While collecting data from available services including über, lyft, taxis, and more... everyone will see which option is best for them. Filter your search by costs, time, and more to maximize your experience using TRNZT, all in a simple interface. TRNZT is travel made simple.
 
 
 ## Contents
