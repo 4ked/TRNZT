@@ -87,6 +87,6 @@ You are now officially capable of running TRNZT in the chrome browser on an http
 
 ## LICENSE
 
-[MIT](https://github.com/4ked/TRNZT/blob/master/LICENSE)
+[Apache](https://github.com/4ked/TRNZT/blob/master/LICENSE)
 
 **- Built by Max Goeke**

@@ -11,6 +11,7 @@
 
 # Dependency directories
 node_modules
+npm-debug.log
 
 ############################
 ## MY KEYS                ##

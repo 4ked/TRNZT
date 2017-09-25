@@ -1,8 +1,8 @@
 {
   "name": "TRNZT",
-  "version": "0.0.1",
-  "description": "A new wrapper for uber",
-  "license": "MIT",
+  "version": "0.0.2",
+  "description": "Transportation Simplified",
+  "license": "Apache",
   "repository": {
     "type": "git",
     "url": "https://github.com/4ked/TRNZT"
@@ -11,7 +11,6 @@
     "name": "Max Goeke",
     "email": "max.goeke0@gmail.com"
   },
-  "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
