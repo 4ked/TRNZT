@@ -1,6 +1,6 @@
 [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/4ked/TRNZT/blob/master/LICENSE)
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/4ked/TRNZT) 
-[![node.js](https://img.shields.io/badge/node.js-v6.0.0-orange.svg)](https://github.com/4ked/TRNZT) 
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/4ked/TRNZT) 
+[![node.js](https://img.shields.io/badge/node.js-v7.8.0-orange.svg)](https://github.com/4ked/TRNZT) 
 
 
 TRNZT
