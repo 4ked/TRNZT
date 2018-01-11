@@ -7,6 +7,7 @@ TRNZT
 =========
 TRNZT is a web-based application purposed to assist users in selecting their next mode of transportation. While collecting data from available services including über, lyft, taxis, and more... everyone will see which option is best for them. Filter your search by costs, time, and more to maximize your experience using TRNZT, all in a simple interface. TRNZT is travel made simple.
 
+TRNZT is a plan to unify all modes of transportation through a very simple, but detailed application. By collecting data from all platforms and services such as taxicabs, über, lyft, buses, ferries, and more... users will finally find the best option for them at all times. With the ability to filter your search by cost, time, comfort, and more, maximize your travel experience with a simple interface. TRNZT is in constant development and testing, contributions are welcome, simply reach out! TRNZT is the future of travel, making the world a simpler place.
 
 ## Contents
 
@@ -36,7 +37,7 @@ TRNZT is a web-based application purposed to assist users in selecting their nex
 
 ## Usage
 
-TRNZT was written on https, which uses SSL certs specific to each project. So in order for you to get TRNZT working, you will need to get your own.
+TRNZT was written on https (developmentally), which uses SSL certs specific to each project. So in order for you to get TRNZT working, you will need to acquire your own.
 
 
 ### Step one: Requesting a Self Signed Certificate
@@ -88,5 +89,7 @@ You are now officially capable of running TRNZT in the chrome browser on an http
 ## LICENSE
 
 [Apache](https://github.com/4ked/TRNZT/blob/master/LICENSE)
+
+LOTS more to come!
 
 **- Built by Max Goeke**
